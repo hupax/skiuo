@@ -8,13 +8,22 @@ COPY proto /proto
 
 # Copy pom.xml and download dependencies (better layer caching)
 COPY core-service/pom.xml .
-RUN mvn dependency:go-offline -B
+
+# Download dependencies and protoc plugins
+RUN mvn dependency:go-offline -B && \
+    mvn protobuf:help -B
+
+# Fix protoc plugin permissions (Alpine issue)
+RUN chmod +x /build/target/protoc-plugins/* 2>/dev/null || true
 
 # Copy source code
 COPY core-service/src ./src
 
 # Build application and generate protobuf
-RUN mvn clean package -DskipTests
+# Fix permissions again after Maven downloads plugins
+RUN mvn protobuf:compile protobuf:compile-custom -B || \
+    (chmod +x /build/target/protoc-plugins/* && mvn protobuf:compile protobuf:compile-custom -B) && \
+    mvn clean package -DskipTests
 
 # Runtime stage
 FROM eclipse-temurin:17-jre-alpine
