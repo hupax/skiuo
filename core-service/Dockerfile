@@ -4,14 +4,14 @@ FROM maven:3.9-eclipse-temurin-17-alpine AS build
 WORKDIR /build
 
 # Copy proto files first (for protobuf generation)
-COPY ../proto /proto
+COPY proto /proto
 
 # Copy pom.xml and download dependencies (better layer caching)
-COPY pom.xml .
+COPY core-service/pom.xml .
 RUN mvn dependency:go-offline -B
 
 # Copy source code
-COPY src ./src
+COPY core-service/src ./src
 
 # Build application and generate protobuf
 RUN mvn clean package -DskipTests

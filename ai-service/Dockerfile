@@ -14,7 +14,7 @@ RUN groupadd -g 1000 python && \
     useradd -u 1000 -g python -s /bin/bash -m python
 
 # Copy requirements first for better caching
-COPY requirements.txt .
+COPY ai-service/requirements.txt .
 
 # Install Python dependencies
 RUN pip install --no-cache-dir --upgrade pip && \
@@ -25,7 +25,7 @@ RUN mkdir -p /app/app/generated/proto && \
     chown -R python:python /app
 
 # Copy protobuf files and generate Python code
-COPY --chown=python:python ../proto /proto
+COPY --chown=python:python proto /proto
 RUN python -m grpc_tools.protoc \
     -I/proto \
     --python_out=/app/app/generated \
@@ -36,7 +36,7 @@ RUN python -m grpc_tools.protoc \
     chown -R python:python /app/app/generated
 
 # Copy application code
-COPY --chown=python:python app ./app
+COPY --chown=python:python ai-service/app ./app
 
 # Switch to non-root user
 USER python:python
