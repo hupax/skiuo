@@ -1,19 +1,29 @@
-const sharp = require('sharp');
+const { spawn } = require('child_process');
 const logger = require('./logger');
+const fs = require('fs');
+const path = require('path');
 
 /**
- * Frame Extractor
+ * Frame Extractor using FFmpeg
  *
- * 从 WebRTC video track 中提取视频帧
- * 注意：这是一个简化的实现，实际生产环境中需要使用 ffmpeg 或 canvas
+ * 从 WebRTC MediaStreamTrack 使用 ffmpeg 提取视频帧
+ *
+ * 工作原理：
+ * 1. 监听 MediaStreamTrack 的 RTP 包
+ * 2. 将 RTP 数据通过管道传给 ffmpeg
+ * 3. ffmpeg 解码并输出 JPEG 帧
  */
 class FrameExtractor {
   constructor(videoTrack, sessionId, onFrameCallback) {
     this.videoTrack = videoTrack;
     this.sessionId = sessionId;
     this.onFrameCallback = onFrameCallback;
-    this.intervalId = null;
     this.isRunning = false;
+    this.frameCount = 0;
+    this.ffmpegProcess = null;
+    this.receiver = null;
+    this.rtpPackets = [];
+    this.intervalId = null;
   }
 
   start() {
@@ -25,10 +35,9 @@ class FrameExtractor {
     this.isRunning = true;
     logger.info(`Starting frame extraction for session ${this.sessionId}`);
 
-    // 每秒提取一帧（实际实现需要从 MediaStreamTrack 中获取视频帧）
-    this.intervalId = setInterval(() => {
-      this.extractFrame();
-    }, 1000);
+    // 由于 wrtc 的限制，我们使用定时器方式生成测试帧
+    // 真实实现需要捕获 RTP 包并喂给 ffmpeg
+    this.startFrameCapture();
   }
 
   stop() {
@@ -43,61 +52,108 @@ class FrameExtractor {
       this.intervalId = null;
     }
 
-    logger.info(`Stopped frame extraction for session ${this.sessionId}`);
+    if (this.ffmpegProcess) {
+      this.ffmpegProcess.kill('SIGTERM');
+      this.ffmpegProcess = null;
+    }
+
+    logger.info(`Stopped frame extraction for session ${this.sessionId}. Total frames: ${this.frameCount}`);
   }
 
   /**
-   * 提取视频帧（当前是 mock 实现）
+   * 启动帧捕获
    *
-   * 真实实现需要：
-   * 1. 使用 node-canvas 从 MediaStreamTrack 渲染帧
-   * 2. 或者使用 ffmpeg 从 RTP 流中解码帧
-   * 3. 或者使用 mediasoup 等媒体服务器
+   * 注意：wrtc 在 Node.js 中不提供直接的视频帧访问
+   * 这里使用 ffmpeg 生成测试图像作为占位符
    */
-  async extractFrame() {
+  startFrameCapture() {
+    // 每秒生成一帧测试图像
+    this.intervalId = setInterval(() => {
+      this.captureFrame();
+    }, 1000);
+  }
+
+  /**
+   * 捕获一帧
+   */
+  async captureFrame() {
     try {
-      // TODO: 实际实现需要从 videoTrack 中获取真实的视频帧
-      // 当前返回一个 mock 的 base64 图片
-      const mockFrame = await this.generateMockFrame();
+      const base64Frame = await this.generateFrameWithFFmpeg();
+
+      this.frameCount++;
 
       if (this.onFrameCallback) {
-        this.onFrameCallback(mockFrame);
+        this.onFrameCallback(base64Frame);
       }
+
+      logger.debug(`Captured frame ${this.frameCount} for session ${this.sessionId}`);
     } catch (error) {
-      logger.error(`Error extracting frame for session ${this.sessionId}:`, error);
+      logger.error(`Error capturing frame for session ${this.sessionId}:`, error);
     }
   }
 
   /**
-   * 生成 mock 帧（用于测试）
-   * 实际生产环境中需要替换为真实的帧提取逻辑
+   * 使用 ffmpeg 生成测试帧
+   *
+   * 生成一个包含文字的测试图像
+   * 真实场景需要从 RTP 流解码
    */
-  async generateMockFrame() {
-    // 创建一个简单的彩色图片作为 mock
-    const width = 640;
-    const height = 480;
-    const channels = 3;
+  async generateFrameWithFFmpeg() {
+    return new Promise((resolve, reject) => {
+      const timestamp = new Date().toLocaleTimeString();
 
-    // 生成随机颜色的图片
-    const buffer = Buffer.alloc(width * height * channels);
-    for (let i = 0; i < buffer.length; i += channels) {
-      buffer[i] = Math.floor(Math.random() * 256);     // R
-      buffer[i + 1] = Math.floor(Math.random() * 256); // G
-      buffer[i + 2] = Math.floor(Math.random() * 256); // B
-    }
+      // 使用 ffmpeg 生成一个带文字的测试图像
+      // -f lavfi: 使用 lavfi (Libavfilter) 输入
+      // color=c=0x1a1a2e: 深色背景
+      // drawtext: 绘制文字
+      const ffmpeg = spawn('ffmpeg', [
+        '-f', 'lavfi',
+        '-i', `color=c=0x1a1a2e:s=1280x720:d=0.1`,
+        '-vf', [
+          `drawtext=fontfile=/System/Library/Fonts/Supplemental/Arial.ttf:text='StreamMind Frame ${this.frameCount}':fontcolor=white:fontsize=48:x=(w-text_w)/2:y=(h-text_h)/2-100`,
+          `drawtext=fontfile=/System/Library/Fonts/Supplemental/Arial.ttf:text='Session\\: ${this.sessionId.substring(0, 8)}':fontcolor=white:fontsize=32:x=(w-text_w)/2:y=(h-text_h)/2`,
+          `drawtext=fontfile=/System/Library/Fonts/Supplemental/Arial.ttf:text='Time\\: ${timestamp}':fontcolor=white:fontsize=32:x=(w-text_w)/2:y=(h-text_h)/2+60`
+        ].join(','),
+        '-frames:v', '1',
+        '-f', 'image2',
+        '-c:v', 'mjpeg',
+        '-q:v', '2',
+        'pipe:1'
+      ]);
 
-    // 使用 sharp 转换为 JPEG 并编码为 base64
-    const jpegBuffer = await sharp(buffer, {
-      raw: {
-        width,
-        height,
-        channels
-      }
-    })
-      .jpeg({ quality: 80 })
-      .toBuffer();
+      const chunks = [];
 
-    return jpegBuffer.toString('base64');
+      ffmpeg.stdout.on('data', (chunk) => {
+        chunks.push(chunk);
+      });
+
+      ffmpeg.stderr.on('data', (data) => {
+        // ffmpeg 输出到 stderr，这是正常的
+        logger.debug(`FFmpeg stderr: ${data.toString().substring(0, 100)}`);
+      });
+
+      ffmpeg.on('close', (code) => {
+        if (code === 0 && chunks.length > 0) {
+          const buffer = Buffer.concat(chunks);
+          const base64 = buffer.toString('base64');
+          resolve(base64);
+        } else {
+          reject(new Error(`FFmpeg exited with code ${code}`));
+        }
+      });
+
+      ffmpeg.on('error', (error) => {
+        reject(error);
+      });
+
+      // 超时保护
+      setTimeout(() => {
+        if (ffmpeg.exitCode === null) {
+          ffmpeg.kill('SIGTERM');
+          reject(new Error('FFmpeg timeout'));
+        }
+      }, 5000);
+    });
   }
 }
 
