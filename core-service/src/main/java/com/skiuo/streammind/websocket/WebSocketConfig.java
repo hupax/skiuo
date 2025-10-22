@@ -16,6 +16,11 @@ public class WebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(analysisWebSocketHandler, "/ws/analysis/{sessionId}")
-            .setAllowedOrigins("*");  // In production, configure specific origins
+            .setAllowedOrigins(
+                "https://skiuo.supanx.net",
+                "https://api.supanx.net",
+                "http://localhost:5173",
+                "http://localhost:3000"
+            );
     }
 }
