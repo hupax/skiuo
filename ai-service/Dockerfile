@@ -28,8 +28,8 @@ RUN mkdir -p /app/app/generated/proto && \
 COPY --chown=python:python proto /proto
 RUN python -m grpc_tools.protoc \
     -I/proto \
-    --python_out=/app/app/generated \
-    --grpc_python_out=/app/app/generated \
+    --python_out=/app/app/generated/proto \
+    --grpc_python_out=/app/app/generated/proto \
     /proto/analysis.proto && \
     touch /app/app/generated/__init__.py && \
     touch /app/app/generated/proto/__init__.py && \
