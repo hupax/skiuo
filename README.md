@@ -1,359 +1,274 @@
 # StreamMind
 
-**AI-powered real-time activity recording system** that captures video and audio through a web browser, performs real-time AI analysis, and generates coherent text descriptions.
+AI-powered real-time activity recording system with video analysis using Qwen-VL-Max.
 
-## 🎯 Overview
-
-StreamMind uses a microservices architecture to:
-- Capture video/audio via WebRTC from browser
-- Extract frames and forward to AI analysis
-- Generate streaming text descriptions using Qwen Vision AI
-- Save and broadcast analysis results in real-time
-
-## 🏗️ Architecture
+## Architecture
 
 ```
-React Frontend (WebRTC)
-    ↓ WebSocket + WebRTC
-Node.js Signaling (Frame extraction)
-    ↓ WebSocket              ↓ REST
-Python AI Service ←───→ Spring Boot Core
-    (Qwen API)         (gRPC)   (Database + WebSocket)
+Browser (React + WebRTC)
+    ↓ WebSocket/REST
+Node.js Signaling ←→ Python AI (Qwen-VL) ←→ Spring Boot Core
+    ↓ WebSocket           ↓ gRPC              ↓ PostgreSQL + Redis
 ```
 
-### Services
+## Server Deployment
 
-1. **core-service** (Spring Boot 3.5.6, Java 17)
-   - REST API for session management
-   - gRPC server for receiving AI analysis
-   - WebSocket broadcasting to frontend
-   - PostgreSQL persistence
-   - JWT authentication
-
-2. **ai-service** (Python 3.11, FastAPI)
-   - Qwen-VL-Max API integration
-   - Streaming token generation
-   - gRPC client to Spring Boot
-   - Session context management
-
-3. **signaling-service** (Node.js 20)
-   - WebRTC signaling server
-   - Video frame extraction (1fps)
-   - Forward frames to Python AI
-   - Notify Spring Boot of events
-
-4. **frontend** (React 18, Vite) - *To be implemented*
-   - WebRTC client
-   - Real-time video preview
-   - Streaming text display
-   - Session management UI
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Docker & Docker Compose
-- Java 17 (for local dev)
-- Node.js 20+ (for local dev)
-- Python 3.11+ (for local dev)
-- Qwen API Key from [DashScope](https://dashscope.console.aliyun.com/)
-
-### Setup
-
-1. **Clone and configure**:
-   ```bash
-   cd skiuo
-   cp .env.example .env
-   # Edit .env and add your QWEN_API_KEY
-   ```
-
-2. **Generate protobuf code**:
-
-   **For Java (core-service)**:
-   ```bash
-   cd core-service
-   mvn protobuf:compile protobuf:compile-custom
-   cd ..
-   ```
-
-   **For Python (ai-service)**:
-   ```bash
-   mkdir -p ai-service/app/generated
-   python3 -m grpc_tools.protoc \
-       -I./proto \
-       --python_out=./ai-service/app/generated \
-       --grpc_python_out=./ai-service/app/generated \
-       ./proto/analysis.proto
-   touch ai-service/app/generated/__init__.py
-   ```
-
-3. **Start with Docker Compose**:
-   ```bash
-   docker-compose up
-   ```
-
-4. **Access the application**:
-   - Spring Boot API: http://localhost:8080
-   - Python AI Service: http://localhost:8000
-   - Node.js Signaling: http://localhost:3000
-   - PostgreSQL: localhost:5432
-   - Redis: localhost:6379
-
-### Development Mode
-
-For development with hot-reload:
+### 1. Prerequisites
 
 ```bash
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+# On Ubuntu/Debian server
+sudo apt update
+sudo apt install -y docker docker-compose git openjdk-17-jdk python3 python3-pip nodejs npm
+
+# Verify installations
+docker --version
+java -version
+python3 --version
+node --version
 ```
 
-Includes:
-- pgAdmin: http://localhost:5050 (admin@streammind.dev / admin)
-- Redis Commander: http://localhost:8081
-- Hot-reload for all services
+### 2. Deploy
 
-## 📋 API Endpoints
+```bash
+# Clone repository
+git clone <repo-url>
+cd skiuo
+
+# Configure environment
+cp .env.example .env
+nano .env  # Add your QWEN_API_KEY
+
+# Start infrastructure
+docker-compose up -d postgres redis
+
+# Generate protobuf (first time only)
+cd core-service && mvn protobuf:compile protobuf:compile-custom && cd ..
+mkdir -p ai-service/app/generated/proto
+python3 -m grpc_tools.protoc -I./proto \
+  --python_out=./ai-service/app/generated \
+  --grpc_python_out=./ai-service/app/generated \
+  ./proto/analysis.proto
+touch ai-service/app/generated/__init__.py
+touch ai-service/app/generated/proto/__init__.py
+
+# Install Python dependencies
+cd ai-service && pip3 install -r requirements.txt && cd ..
+
+# Install Node.js dependencies
+cd signaling-service && npm install && cd ..
+
+# Install frontend dependencies
+cd frontend && npm install && npm run build && cd ..
+```
+
+### 3. Start Services (using PM2)
+
+```bash
+# Install PM2
+npm install -g pm2
+
+# Start Spring Boot
+cd core-service
+pm2 start "mvn spring-boot:run" --name streammind-core
+
+# Start Python AI
+cd ../ai-service
+pm2 start "uvicorn app.main:app --host 0.0.0.0 --port 8000" --name streammind-ai
+
+# Start Node.js Signaling
+cd ../signaling-service
+pm2 start src/server.js --name streammind-signaling
+
+# Save PM2 configuration
+pm2 save
+pm2 startup
+```
+
+### 4. Configure Nginx (Optional)
+
+```nginx
+server {
+    listen 80;
+    server_name your-domain.com;
+
+    # Frontend
+    location / {
+        root /path/to/skiuo/frontend/dist;
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Spring Boot API
+    location /api {
+        proxy_pass http://localhost:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # WebSocket
+    location /ws {
+        proxy_pass http://localhost:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+
+    # Signaling
+    location /signaling {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}
+```
+
+### 5. Access
+
+- Frontend: http://your-server-ip (or http://your-domain.com)
+- Spring Boot API: http://your-server-ip:8080
+- Python AI Docs: http://your-server-ip:8000/docs
+
+## Environment Variables
+
+Key variables in `.env`:
+
+```bash
+# Required - Get from https://dashscope.console.aliyun.com/
+QWEN_API_KEY=sk-your-api-key-here
+
+# Database
+POSTGRES_PASSWORD=your-secure-password
+DATABASE_URL=jdbc:postgresql://localhost:5432/streammind
+
+# JWT Secret (change in production!)
+JWT_SECRET=your-secret-key-at-least-32-characters-long
+
+# Service URLs (adjust for your setup)
+SPRING_BOOT_GRPC_HOST=localhost
+SPRING_BOOT_GRPC_PORT=9090
+PYTHON_SERVICE_PORT=8000
+```
+
+## API Endpoints
 
 ### Authentication
-
 ```bash
 # Register
 POST /api/auth/register
-Content-Type: application/json
+{"username": "user", "email": "user@example.com", "password": "password123"}
 
-{
-  "username": "user",
-  "email": "user@example.com",
-  "password": "password123"
-}
-
-# Login
+# Login (returns JWT)
 POST /api/auth/login
-Content-Type: application/json
-
-{
-  "username": "user",
-  "password": "password123"
-}
+{"username": "user", "password": "password123"}
 ```
 
 ### Sessions
-
 ```bash
 # Start recording
 POST /api/sessions/start
 Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-  "title": "Coding Session",
-  "description": "Algorithm practice"
-}
+{"title": "Coding Session", "description": "Algorithm practice"}
 
 # Stop recording
 POST /api/sessions/{id}/stop
 Authorization: Bearer <token>
 
-# Get session details
-GET /api/sessions/{id}
-Authorization: Bearer <token>
-
-# List user sessions
+# List sessions
 GET /api/sessions
 Authorization: Bearer <token>
+
+# Get analysis
+GET /api/sessions/{id}/analysis
+Authorization: Bearer <token>
 ```
 
-## 🔧 Development
-
-### Run Services Locally
-
-**Infrastructure (PostgreSQL + Redis)**:
-```bash
-docker-compose -f docker-compose.dev.yml up
+### WebSocket
+```
+ws://your-server/ws/analysis/{sessionId}
 ```
 
-**Core Service (Spring Boot)**:
+## Tech Stack
+
+- **Backend**: Spring Boot 3.5 + Java 17
+- **AI Service**: FastAPI + Python 3.12 + Qwen-VL-Max
+- **Signaling**: Node.js 20 + Express + WebRTC
+- **Frontend**: React 19 + TypeScript + Vite
+- **Database**: PostgreSQL 15 + Redis 7
+- **Communication**: REST + WebSocket + gRPC
+
+## Management Commands
+
 ```bash
-cd core-service
-mvn spring-boot:run
+# Check service status
+pm2 status
+
+# View logs
+pm2 logs streammind-core
+pm2 logs streammind-ai
+pm2 logs streammind-signaling
+
+# Restart services
+pm2 restart all
+
+# Stop services
+pm2 stop all
+
+# Delete services
+pm2 delete all
 ```
 
-**AI Service (Python)**:
+## Troubleshooting
+
+**Q: Qwen API errors?**
 ```bash
-cd ai-service
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
+# Check API key
+echo $QWEN_API_KEY
+
+# View Python logs
+pm2 logs streammind-ai
 ```
 
-**Signaling Service (Node.js)**:
+**Q: Database connection errors?**
 ```bash
-cd signaling-service
+# Check PostgreSQL
+docker logs streammind-postgres
+docker exec -it streammind-postgres psql -U streammind -d streammind -c '\dt'
+```
+
+**Q: Port already in use?**
+```bash
+# Find process using port
+lsof -i :8080
+lsof -i :8000
+lsof -i :3000
+
+# Kill process
+kill -9 <PID>
+```
+
+**Q: Frontend build fails?**
+```bash
+cd frontend
+rm -rf node_modules package-lock.json
 npm install
-npm run dev
+npm run build
 ```
 
-## 📊 Database Schema
-
-- **users**: User accounts with BCrypt hashed passwords
-- **sessions**: Recording sessions (CREATED → ACTIVE → STOPPED → COMPLETED)
-- **analysis_records**: AI-generated tokens with timestamps and indices
-
-Default admin user:
-- Username: `admin`
-- Password: `admin123` (change this!)
-
-## 🔐 Environment Variables
-
-See `.env.example` for all configuration options.
-
-Critical variables:
-- `QWEN_API_KEY`: **Required** for AI analysis
-- `JWT_SECRET`: Change in production!
-- `POSTGRES_PASSWORD`: Change in production!
-
-## 🐛 Troubleshooting
-
-**Protobuf compilation errors**:
-```bash
-# Install required tools
-mvn --version  # Ensure Maven is installed
-pip install grpcio-tools  # For Python
-```
-
-**Docker build fails**:
-```bash
-# Clean and rebuild
-docker-compose down -v
-docker-compose build --no-cache
-docker-compose up
-```
-
-**Database connection errors**:
-```bash
-# Check if PostgreSQL is ready
-docker-compose logs postgres
-# Ensure core-service waits for postgres health check
-```
-
-**Qwen API errors**:
-- Verify API key in `.env`
-- Check API quota at DashScope console
-- Review logs: `docker-compose logs ai-service`
-
-**WebSocket connection issues**:
-- Check CORS settings in SecurityConfig.java
-- Verify WebSocket path: `/ws/analysis/{sessionId}`
-- Check browser console for errors
-
-## 📝 Project Structure
+## Project Structure
 
 ```
 skiuo/
-├── doc/                      # Design documents
-│   ├── dev1.md              # Initial architecture
-│   ├── dev2.md              # Final architecture
-│   └── prompt.md            # Design notes
-├── proto/                    # Shared protobuf definitions
-│   └── analysis.proto
-├── docker/                   # Docker initialization
-│   └── postgres/init.sql
-├── core-service/            # Spring Boot backend
-│   ├── src/main/java/com/skiuo/streammind/
-│   │   ├── controller/
-│   │   ├── service/
-│   │   ├── repository/
-│   │   ├── model/
-│   │   ├── dto/
-│   │   ├── grpc/
-│   │   ├── websocket/
-│   │   └── security/
-│   ├── pom.xml
-│   └── Dockerfile
-├── ai-service/              # Python AI service
-│   ├── app/
-│   │   ├── main.py
-│   │   ├── config.py
-│   │   ├── qwen_client.py
-│   │   ├── grpc_client.py
-│   │   └── context_manager.py
-│   ├── requirements.txt
-│   └── Dockerfile
-├── signaling-service/       # Node.js WebRTC
-│   ├── src/
-│   │   ├── server.js
-│   │   ├── signaling.js
-│   │   ├── frame-extractor.js
-│   │   ├── config.js
-│   │   └── logger.js
-│   ├── package.json
-│   └── Dockerfile
-├── docker-compose.yml
-├── docker-compose.dev.yml
-├── .env.example
-├── CLAUDE.md                # AI assistant instructions
-└── README.md
+├── core-service/         # Spring Boot backend
+├── ai-service/          # Python AI service
+├── signaling-service/   # Node.js WebRTC signaling
+├── frontend/            # React frontend
+├── proto/              # Protobuf definitions
+├── docker/             # Database init scripts
+├── doc/                # Design documents
+├── docker-compose.yml  # Infrastructure
+└── .env               # Configuration
 ```
 
-## 🎓 Technical Stack
-
-| Component | Technology |
-|-----------|-----------|
-| Backend API | Spring Boot 3.5.6, Java 17 |
-| AI Service | Python 3.11, FastAPI |
-| Signaling | Node.js 20, Express, WebSocket |
-| Frontend | React 18, Vite (TODO) |
-| Database | PostgreSQL 15 |
-| Cache | Redis 7 |
-| AI Model | Alibaba Qwen-VL-Max API |
-| Communication | REST, WebSocket, gRPC, WebRTC |
-| Container | Docker, Docker Compose |
-
-## 📈 Current Status
-
-✅ **Completed**:
-- Spring Boot REST API with JWT authentication
-- PostgreSQL schema and JPA entities
-- gRPC server for receiving AI analysis
-- WebSocket broadcasting for real-time tokens
-- Python FastAPI service with Qwen API integration
-- Node.js WebRTC signaling server
-- Docker Compose orchestration
-- Development environment setup
-
-⏳ **In Progress / TODO**:
-- React frontend implementation
-- Actual WebRTC frame extraction (currently mock)
-- Frontend WebSocket client
-- End-to-end testing
-- Production deployment configuration
-
-## 🚧 Known Limitations
-
-1. **Frame Extraction**: The Node.js service has a mock frame extractor. Real implementation requires:
-   - Proper RTP packet handling
-   - Video decoding (ffmpeg integration)
-   - Or using a media server like Mediasoup
-
-2. **Frontend**: React frontend is not yet implemented
-
-3. **Authentication**: Currently basic JWT. Consider adding:
-   - Refresh tokens
-   - OAuth2 support
-   - Rate limiting
-
-## 📄 License
+## License
 
 MIT
-
-## 🙏 Acknowledgments
-
-- Design based on requirements in `doc/dev2.md`
-- AI model powered by Alibaba Cloud DashScope Qwen-VL-Max
-- Evolved from original `coding-recorder` project
-
----
-
-For detailed architecture and design decisions, see:
-- `/doc/dev1.md` - Initial multi-language design
-- `/doc/dev2.md` - Final simplified architecture
-- `/doc/prompt.md` - Design evolution notes

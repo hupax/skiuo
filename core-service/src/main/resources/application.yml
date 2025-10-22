@@ -5,7 +5,7 @@ spring:
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/streammind}
     username: ${SPRING_DATASOURCE_USERNAME:streammind}
-    password: ${SPRING_DATASOURCE_PASSWORD:streammind_dev_password}
+    password: ${SPRING_DATASOURCE_PASSWORD:javapostgres}
     driver-class-name: org.postgresql.Driver
 
   jpa:

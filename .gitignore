@@ -1,2 +1,42 @@
-*/.idea
-*/node_modules
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+*.log
+
+# Dependencies
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Build outputs
+target/
+dist/
+build/
+*.class
+
+# Generated files
+*/app/generated/
+core-service/src/main/generated/
+core-service/target/generated-sources/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Logs
+logs/
+*.log
+npm-debug.log*

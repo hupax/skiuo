@@ -6,6 +6,9 @@ from .config import settings
 
 # Import generated protobuf code
 # Note: This will be generated after running protoc
+analysis_pb2 = None
+analysis_pb2_grpc = None
+
 try:
     from app.generated.proto import analysis_pb2, analysis_pb2_grpc
 except ImportError:

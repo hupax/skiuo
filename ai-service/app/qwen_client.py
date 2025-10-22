@@ -42,7 +42,7 @@ class QwenVisionClient:
     def __init__(self):
         self.api_key = settings.qwen_api_key
         self.api_url = settings.qwen_api_url
-        self.model = settings.model_name
+        self.model = settings.ai_model_name
         self.timeout = settings.timeout_seconds
 
         if not self.api_key:

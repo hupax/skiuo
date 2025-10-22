@@ -21,11 +21,12 @@ class Settings(BaseSettings):
     log_level: str = os.getenv("LOG_LEVEL", "INFO")
 
     # AI Model Configuration
-    model_name: str = "qwen-vl-max"
+    ai_model_name: str = "qwen-vl-max"  # 重命名避免与 pydantic 的 model_ 命名空间冲突
     max_retries: int = 3
     timeout_seconds: int = 120
 
     class Config:
         env_file = "..env"
+        protected_namespaces = ('settings_',)  # 修改保护的命名空间
 
 settings = Settings()

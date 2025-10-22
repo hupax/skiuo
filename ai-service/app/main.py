@@ -1,5 +1,6 @@
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
+from contextlib import asynccontextmanager
 import logging
 import asyncio
 
@@ -15,7 +16,23 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="StreamMind AI Service", version="1.0.0")
+# Global instances
+qwen_client = QwenVisionClient()
+grpc_client = SpringBootGrpcClient()
+context_manager = ContextManager()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    logger.info("StreamMind AI Service starting up...")
+    logger.info(f"Qwen API configured: {bool(settings.qwen_api_key)}")
+    logger.info(f"Spring Boot gRPC: {settings.spring_boot_grpc_host}:{settings.spring_boot_grpc_port}")
+    yield
+    # Shutdown
+    logger.info("StreamMind AI Service shutting down...")
+    await grpc_client.close()
+
+app = FastAPI(title="StreamMind AI Service", version="1.0.0", lifespan=lifespan)
 
 # CORS middleware
 app.add_middleware(
@@ -26,28 +43,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Global instances
-qwen_client = QwenVisionClient()
-grpc_client = SpringBootGrpcClient()
-context_manager = ContextManager()
-
-@app.on_event("startup")
-async def startup_event():
-    logger.info("StreamMind AI Service starting up...")
-    logger.info(f"Qwen API configured: {bool(settings.qwen_api_key)}")
-    logger.info(f"Spring Boot gRPC: {settings.spring_boot_grpc_host}:{settings.spring_boot_grpc_port}")
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    logger.info("StreamMind AI Service shutting down...")
-    await grpc_client.close()
-
 @app.get("/")
 async def root():
     return {
         "service": "StreamMind AI Service",
         "status": "running",
-        "model": settings.model_name
+        "model": settings.ai_model_name
     }
 
 @app.get("/health")
