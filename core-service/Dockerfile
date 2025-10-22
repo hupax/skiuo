@@ -1,5 +1,5 @@
 # Multi-stage build for Spring Boot
-FROM maven:3.9-eclipse-temurin-17-alpine AS build
+FROM maven:3.9-eclipse-temurin-17 AS build
 
 WORKDIR /build
 
@@ -8,34 +8,25 @@ COPY proto /proto
 
 # Copy pom.xml and download dependencies (better layer caching)
 COPY core-service/pom.xml .
-
-# Download dependencies and protoc plugins
-RUN mvn dependency:go-offline -B && \
-    mvn protobuf:help -B
-
-# Fix protoc plugin permissions (Alpine issue)
-RUN chmod +x /build/target/protoc-plugins/* 2>/dev/null || true
+RUN mvn dependency:go-offline -B
 
 # Copy source code
 COPY core-service/src ./src
 
 # Build application and generate protobuf
-# Fix permissions again after Maven downloads plugins
-RUN mvn protobuf:compile protobuf:compile-custom -B || \
-    (chmod +x /build/target/protoc-plugins/* && mvn protobuf:compile protobuf:compile-custom -B) && \
-    mvn clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Runtime stage
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:17-jre
 
 WORKDIR /app
 
 # Install curl for healthcheck
-RUN apk add --no-cache curl
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
 # Create non-root user
-RUN addgroup -g 1000 spring && \
-    adduser -u 1000 -G spring -s /bin/sh -D spring
+RUN groupadd -r -g 1000 spring && \
+    useradd -r -u 1000 -g spring spring
 
 # Copy JAR from build stage
 COPY --from=build /build/target/*.jar app.jar
