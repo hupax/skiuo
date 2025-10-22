@@ -13,15 +13,18 @@ try:
     from app.generated.proto import analysis_pb2, analysis_pb2_grpc
 except ImportError:
     try:
-        from generated.proto import analysis_pb2, analysis_pb2_grpc
+        from app.generated import analysis_pb2, analysis_pb2_grpc
     except ImportError:
         try:
-            from app.generated import analysis_pb2, analysis_pb2_grpc
+            from generated.proto import analysis_pb2, analysis_pb2_grpc
         except ImportError:
-            logger = logging.getLogger(__name__)
-            logger.warning("Protobuf files not generated yet. Run: python -m grpc_tools.protoc ...")
-            analysis_pb2 = None
-            analysis_pb2_grpc = None
+            try:
+                from generated import analysis_pb2, analysis_pb2_grpc
+            except ImportError:
+                logger = logging.getLogger(__name__)
+                logger.warning("Protobuf files not generated yet. Run: python -m grpc_tools.protoc ...")
+                analysis_pb2 = None
+                analysis_pb2_grpc = None
 
 logger = logging.getLogger(__name__)
 
