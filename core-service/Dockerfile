@@ -24,9 +24,9 @@ WORKDIR /app
 # Install curl for healthcheck
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
-# Create non-root user
-RUN groupadd -r -g 1000 spring && \
-    useradd -r -u 1000 -g spring spring
+# Create non-root user (use existing group 1000 if exists)
+RUN groupadd -r -g 1001 spring 2>/dev/null || true && \
+    useradd -r -u 1001 -g 1001 spring
 
 # Copy JAR from build stage
 COPY --from=build /build/target/*.jar app.jar

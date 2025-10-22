@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Create non-root user
-RUN groupadd -g 1000 python && \
-    useradd -u 1000 -g python -s /bin/bash -m python
+RUN groupadd -g 1001 python && \
+    useradd -u 1001 -g python -s /bin/bash -m python
 
 # Copy requirements first for better caching
 COPY ai-service/requirements.txt .
