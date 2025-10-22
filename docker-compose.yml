@@ -1,0 +1,136 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: streammind-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-streammind}
+      POSTGRES_USER: ${POSTGRES_USER:-streammind}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-streammind_dev_password}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-streammind}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - streammind-network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: streammind-redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - streammind-network
+
+  # Spring Boot Core Service
+  core-service:
+    build:
+      context: ./core-service
+      dockerfile: Dockerfile
+    container_name: streammind-core
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-streammind}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-streammind}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-streammind_dev_password}
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+      JWT_SECRET: ${JWT_SECRET:-dev-secret-key-change-in-production}
+      GRPC_SERVER_PORT: 9090
+      SERVER_PORT: 8080
+      SPRING_PROFILES_ACTIVE: production
+    ports:
+      - "8080:8080"
+      - "9090:9090"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - streammind-network
+    restart: unless-stopped
+
+  # Python AI Service
+  ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    container_name: streammind-ai
+    environment:
+      QWEN_API_KEY: ${QWEN_API_KEY}
+      QWEN_API_URL: ${QWEN_API_URL:-https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation}
+      SPRING_BOOT_GRPC_HOST: core-service
+      SPRING_BOOT_GRPC_PORT: 9090
+      PYTHON_SERVICE_PORT: 8000
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    ports:
+      - "8000:8000"
+    depends_on:
+      - core-service
+    networks:
+      - streammind-network
+    restart: unless-stopped
+
+  # Node.js Signaling Service
+  signaling-service:
+    build:
+      context: ./signaling-service
+      dockerfile: Dockerfile
+    container_name: streammind-signaling
+    environment:
+      SPRING_BOOT_API_URL: http://core-service:8080
+      PYTHON_AI_WS_URL: ws://ai-service:8000
+      NODE_SERVICE_PORT: 3000
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - core-service
+      - ai-service
+    networks:
+      - streammind-network
+    restart: unless-stopped
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_SPRING_BOOT_API_URL: ${VITE_SPRING_BOOT_API_URL:-http://localhost:8080}
+        VITE_SIGNALING_WS_URL: ${VITE_SIGNALING_WS_URL:-ws://localhost:3000}
+        VITE_ANALYSIS_WS_URL: ${VITE_ANALYSIS_WS_URL:-ws://localhost:8080/ws/analysis}
+    container_name: streammind-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - core-service
+      - signaling-service
+    networks:
+      - streammind-network
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+  redis-data:
+
+networks:
+  streammind-network:
+    driver: bridge

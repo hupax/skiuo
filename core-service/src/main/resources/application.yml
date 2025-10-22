@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: core-service
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/streammind}
+    username: ${SPRING_DATASOURCE_USERNAME:streammind}
+    password: ${SPRING_DATASOURCE_PASSWORD:streammind_dev_password}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  data:
+    redis:
+      host: ${SPRING_REDIS_HOST:localhost}
+      port: ${SPRING_REDIS_PORT:6379}
+      timeout: 2000ms
+
+  security:
+    jwt:
+      secret: ${JWT_SECRET:dev-secret-key-change-in-production}
+      expiration: 86400000  # 24 hours in milliseconds
+
+server:
+  port: ${SERVER_PORT:8080}
+
+# gRPC Server Configuration
+grpc:
+  server:
+    port: ${GRPC_SERVER_PORT:9090}
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.skiuo.streammind: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"

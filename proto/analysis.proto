@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option java_package = "com.skiuo.streammind.grpc";
+option java_outer_classname = "AnalysisProto";
+option java_multiple_files = true;
+
+package analysis;
+
+// Analysis service for receiving AI analysis results from Python service
+service AnalysisService {
+  // Save a single analysis token (streaming from Python to Spring Boot)
+  rpc SaveAnalysis(AnalysisRequest) returns (AnalysisResponse);
+
+  // Get analysis results for a session (streaming from Spring Boot to clients)
+  rpc GetAnalysis(GetAnalysisRequest) returns (stream AnalysisChunk);
+}
+
+// Request to save an analysis token
+message AnalysisRequest {
+  string session_id = 1;
+  string content = 2;          // The analysis text/token
+  int32 token_index = 3;       // Sequential token number
+  int64 timestamp = 4;         // Unix timestamp in milliseconds
+}
+
+// Response after saving analysis
+message AnalysisResponse {
+  bool success = 1;
+  string message = 2;
+  int64 saved_id = 3;          // Database ID of saved record
+}
+
+// Request to get analysis for a session
+message GetAnalysisRequest {
+  string session_id = 1;
+  int32 from_token_index = 2;  // Start from this token (for pagination)
+  int32 limit = 3;             // Max number of tokens to return
+}
+
+// Chunk of analysis data (for streaming responses)
+message AnalysisChunk {
+  int64 id = 1;
+  string session_id = 2;
+  string content = 3;
+  int32 token_index = 4;
+  int64 timestamp = 5;
+}
