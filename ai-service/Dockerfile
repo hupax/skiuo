@@ -21,18 +21,18 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 # Create directories for generated protobuf
-RUN mkdir -p /app/app/generated/proto && \
+RUN mkdir -p /app/app/generated && \
     chown -R python:python /app
 
 # Copy protobuf files and generate Python code
 COPY --chown=python:python proto /proto
 RUN python -m grpc_tools.protoc \
     -I/proto \
-    --python_out=/app/app/generated/proto \
-    --grpc_python_out=/app/app/generated/proto \
+    --python_out=/app/app/generated \
+    --grpc_python_out=/app/app/generated \
     /proto/analysis.proto && \
+    sed -i 's/^import analysis_pb2/from . import analysis_pb2/' /app/app/generated/analysis_pb2_grpc.py && \
     touch /app/app/generated/__init__.py && \
-    touch /app/app/generated/proto/__init__.py && \
     chown -R python:python /app/app/generated
 
 # Copy application code
