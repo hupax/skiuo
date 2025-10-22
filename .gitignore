@@ -40,3 +40,4 @@ coverage/
 logs/
 *.log
 npm-debug.log*
+doc
