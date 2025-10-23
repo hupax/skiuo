@@ -28,15 +28,21 @@ class SpringBootGrpcClient:
         self.port = settings.spring_boot_grpc_port
         self.channel: Optional[grpc.aio.Channel] = None
         self.stub = None
+        self._initialized = False
 
-        if analysis_pb2_grpc:
-            self._connect()
+    async def _ensure_connected(self):
+        """Ensure gRPC connection is established (lazy initialization)"""
+        if self._initialized:
+            return
 
-    def _connect(self):
-        """Establish gRPC connection"""
+        if not analysis_pb2_grpc:
+            logger.warning("Protobuf files not available, gRPC disabled")
+            return
+
         address = f"{self.host}:{self.port}"
         self.channel = grpc.aio.insecure_channel(address)
         self.stub = analysis_pb2_grpc.AnalysisServiceStub(self.channel)
+        self._initialized = True
         logger.info(f"gRPC client connected to {address}")
 
     async def save_analysis(
@@ -52,6 +58,9 @@ class SpringBootGrpcClient:
         Returns:
             bool: True if saved successfully
         """
+        # Ensure connection is established in current event loop
+        await self._ensure_connected()
+
         if not self.stub:
             logger.error("gRPC stub not initialized (protobuf files missing?)")
             return False

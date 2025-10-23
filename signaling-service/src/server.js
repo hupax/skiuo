@@ -3,7 +3,7 @@ const http = require('http');
 const WebSocket = require('ws');
 const config = require('./config');
 const logger = require('./logger');
-const SignalingHandler = require('./signaling');
+const FrameHandler = require('./frame-handler');
 
 const app = express();
 const server = http.createServer(app);
@@ -22,24 +22,30 @@ wss.on('connection', (ws, req) => {
   const url = new URL(req.url, `ws://${req.headers.host}`);
   const pathParts = url.pathname.split('/');
 
-  // Expected path: /signaling/{sessionId}
-  if (pathParts.length >= 3 && pathParts[1] === 'signaling') {
+  // Handle different WebSocket paths
+  if (pathParts.length >= 3) {
     const sessionId = pathParts[2];
-    logger.info(`WebSocket connected for session: ${sessionId}`);
 
-    const handler = new SignalingHandler(ws, sessionId);
-    handler.start();
+    // Path: /frames/{sessionId} - For video frame transmission
+    if (pathParts[1] === 'frames') {
+      logger.info(`Frames WebSocket connected for session: ${sessionId}`);
 
-    ws.on('close', () => {
-      logger.info(`WebSocket closed for session: ${sessionId}`);
-      handler.stop();
-    });
+      const handler = new FrameHandler(ws, sessionId);
+      handler.start();
 
-    ws.on('error', (error) => {
-      logger.error(`WebSocket error for session ${sessionId}:`, error);
-      handler.stop();
-    });
+      ws.on('close', () => {
+        logger.info(`Frames WebSocket closed for session: ${sessionId}`);
+        handler.stop();
+      });
 
+      ws.on('error', (error) => {
+        logger.error(`Frames WebSocket error for session ${sessionId}:`, error);
+        handler.stop();
+      });
+    } else {
+      logger.warn('WebSocket connection with invalid path:', url.pathname);
+      ws.close(1008, 'Invalid path');
+    }
   } else {
     logger.warn('WebSocket connection with invalid path:', url.pathname);
     ws.close(1008, 'Invalid path');

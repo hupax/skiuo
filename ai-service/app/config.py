@@ -6,7 +6,7 @@ except ImportError:
 
 class Settings(BaseSettings):
     # Qwen API Configuration
-    qwen_api_key: str = os.getenv("QWEN_API_KEY", "")
+    qwen_api_key: str = os.getenv("QWEN_API_KEY", "sk-ca9c7b9a2f33471d8d092851ccc74b68")
     qwen_api_url: str = os.getenv(
         "QWEN_API_URL",
         "https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation"

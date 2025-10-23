@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { sessionAPI } from '../services/api';
-import WebRTCClient from '../services/webrtc';
+import VideoRecorderService from '../services/video-recorder';
 import AnalysisWebSocket from '../services/websocket';
 import VideoPreview from '../components/VideoPreview';
 import AnalysisDisplay from '../components/AnalysisDisplay';
@@ -14,8 +14,9 @@ const RecordingPage: React.FC = () => {
   const [tokens, setTokens] = useState<string[]>([]);
   const [error, setError] = useState('');
   const [localStream, setLocalStream] = useState<MediaStream | null>(null);
+  const [uploadedSegments, setUploadedSegments] = useState<number>(0);
 
-  const webrtcClient = useRef<WebRTCClient | null>(null);
+  const videoRecorderService = useRef<VideoRecorderService | null>(null);
   const wsClient = useRef<AnalysisWebSocket | null>(null);
 
   const { user, logout } = useAuth();
@@ -32,27 +33,44 @@ const RecordingPage: React.FC = () => {
     try {
       setError('');
       setTokens([]);
+      setUploadedSegments(0);
 
       // 1. Create session via API
-      const newSession = await sessionAPI.start('录制会话', '实时AI分析');
+      const newSession = await sessionAPI.start('录制会话', 'AI视频分析');
       setSession(newSession);
 
-      // 2. Initialize WebRTC client
-      webrtcClient.current = new WebRTCClient();
-      const success = await webrtcClient.current.start(
-        newSession.id,
-        (err) => setError(err.message)
-      );
-
-      if (!success) {
-        throw new Error('WebRTC连接失败');
-      }
-
-      // Get local stream for preview
-      const stream = webrtcClient.current.getLocalStream();
+      // 2. Get user media (camera + microphone)
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: {
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
+          frameRate: { ideal: 30 }
+        },
+        audio: false  // 暂时禁用音频
+      });
       setLocalStream(stream);
 
-      // 3. Connect WebSocket for analysis tokens
+      // 3. Initialize video recorder service
+      videoRecorderService.current = new VideoRecorderService();
+      await videoRecorderService.current.initialize(stream, {
+        sessionId: newSession.id,
+        segmentDuration: 30000,  // 30 秒一个片段
+        onUploadSuccess: (response) => {
+          console.log('Segment uploaded:', response);
+          setUploadedSegments(prev => prev + 1);
+        },
+        onUploadError: (error) => {
+          console.error('Upload error:', error);
+          setError(`视频上传失败: ${error.message}`);
+        },
+        onSegmentRecorded: (segmentIndex) => {
+          console.log('Segment recorded:', segmentIndex);
+        }
+      });
+
+      videoRecorderService.current.startRecording();
+
+      // 4. Connect WebSocket for analysis tokens
       wsClient.current = new AnalysisWebSocket();
       wsClient.current.connect(
         newSession.id,
@@ -73,21 +91,26 @@ const RecordingPage: React.FC = () => {
 
   const stopRecording = async () => {
     try {
-      // 1. Stop WebRTC
-      if (webrtcClient.current) {
-        webrtcClient.current.stop();
-        webrtcClient.current = null;
+      // 1. Stop video recorder
+      if (videoRecorderService.current) {
+        videoRecorderService.current.stopRecording();
+        videoRecorderService.current.close();
+        videoRecorderService.current = null;
       }
 
-      // 2. Close WebSocket
+      // 2. Stop local stream
+      if (localStream) {
+        localStream.getTracks().forEach(track => track.stop());
+        setLocalStream(null);
+      }
+
+      // 3. Close WebSocket
       if (wsClient.current) {
         wsClient.current.close();
         wsClient.current = null;
       }
 
-      setLocalStream(null);
-
-      // 3. Stop session via API
+      // 4. Stop session via API
       if (session) {
         await sessionAPI.stop(session.id);
         console.log('Recording stopped:', session.id);
@@ -204,6 +227,11 @@ const RecordingPage: React.FC = () => {
                 <div style={{ color: isRecording ? '#4CAF50' : '#FF9800', fontWeight: 'bold', marginTop: '0.5rem' }}>
                   {isRecording ? '● 录制中' : '○ 已停止'}
                 </div>
+                {uploadedSegments > 0 && (
+                  <div style={{ color: '#666', fontSize: '0.9rem', marginTop: '0.5rem' }}>
+                    已上传片段: {uploadedSegments}
+                  </div>
+                )}
               </div>
             )}
           </div>

@@ -59,3 +59,26 @@ logging:
     org.hibernate.SQL: WARN
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# Application Configuration
+app:
+  # 视频存储配置
+  video:
+    storage-dir: ${VIDEO_STORAGE_DIR:/tmp/videos}  # 视频临时存储目录
+    max-file-size: ${VIDEO_MAX_FILE_SIZE:100MB}    # 单个视频文件最大大小
+
+  # Python AI 服务配置
+  python-ai:
+    url: ${PYTHON_AI_URL:http://localhost:8000}    # Python AI 服务地址
+
+  # Worker 线程池配置
+  worker:
+    thread-count: ${WORKER_THREAD_COUNT:2}         # Worker 线程数（根据CPU和AI服务能力调整）
+
+# Spring Boot Multipart 配置
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: ${VIDEO_MAX_FILE_SIZE:100MB}
+      max-request-size: ${VIDEO_MAX_FILE_SIZE:100MB}

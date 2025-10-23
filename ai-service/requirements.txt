@@ -1,10 +1,24 @@
+# FastAPI and server
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
 websockets==12.0
+
+# gRPC communication
 grpcio==1.60.0
 grpcio-tools==1.60.0
-Pillow==10.1.0
+
+# HTTP client for AI API
 httpx==0.25.2
+
+# Image/Video processing
+Pillow==10.1.0
+
+# Configuration
 python-dotenv==1.0.0
 pydantic==2.5.2
 pydantic-settings==2.1.0
+
+# NOTE: FFmpeg must be installed separately on the system
+# macOS: brew install ffmpeg
+# Ubuntu: sudo apt-get install ffmpeg
+# The video_processor.py uses subprocess to call ffmpeg commands
