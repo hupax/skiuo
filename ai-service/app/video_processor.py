@@ -121,8 +121,8 @@ class VideoProcessor:
                 logger.info(f"Remaining duration {window_duration:.2f}s too short, skipping")
                 break
 
-            # 生成窗口文件路径（使用 WebM 格式以兼容 VP8 编码）
-            window_filename = f"window_{window_index:03d}_{int(current_time)}_{int(end_time)}.webm"
+            # 生成窗口文件路径（使用 MP4 格式，Qwen API 推荐）
+            window_filename = f"window_{window_index:03d}_{int(current_time)}_{int(end_time)}.mp4"
             window_path = session_dir / window_filename
 
             # 使用 FFmpeg 切片
@@ -180,8 +180,12 @@ class VideoProcessor:
             '-i', video_path,
             '-ss', str(start_time),
             '-t', str(duration),
-            '-c', 'copy',  # 直接复制流，速度快
-            '-y',  # 覆盖已存在的文件
+            '-c:v', 'libx264',      # 视频：使用 H.264 编码器
+            '-preset', 'fast',      # 编码速度：fast（平衡速度和质量）
+            '-crf', '23',           # 质量：23（默认值，0=无损，51=最差）
+            '-an',                  # 跳过音频（前端录制时禁用了音频）
+            '-movflags', '+faststart',  # 优化 MP4 用于流式播放
+            '-y',                   # 覆盖已存在的文件
             output_path
         ]
 

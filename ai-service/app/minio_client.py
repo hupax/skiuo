@@ -78,12 +78,15 @@ class MinioClient:
             # 上传文件
             logger.info(f"Uploading {local_path} to Minio as {object_name}...")
 
+            # 自动检测 Content-Type
+            content_type = 'video/mp4' if local_path.endswith('.mp4') else 'video/webm'
+
             with open(local_path, 'rb') as file_data:
                 self.s3_client.upload_fileobj(
                     file_data,
                     self.bucket_name,
                     object_name,
-                    ExtraArgs={'ContentType': 'video/webm'}
+                    ExtraArgs={'ContentType': content_type}
                 )
 
             # 生成公网URL

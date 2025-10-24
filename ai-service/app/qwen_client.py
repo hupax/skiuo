@@ -211,19 +211,28 @@ class QwenVisionClient:
         )
 
         # Build message content
-        # Qwen-VL supports both local file:// URLs and HTTP/HTTPS URLs
+        # Qwen-VL API 格式：https://help.aliyun.com/zh/model-studio/vision
         if video_path.startswith("http://") or video_path.startswith("https://"):
-            # Use HTTP URL directly
+            # Use HTTP URL directly (推荐方式)
             video_url = video_path
         else:
-            # Convert local path to file:// URL
+            # 本地文件需要先上传到 Minio 获取 URL
+            logger.warning(f"Local file path detected: {video_path}, should use Minio URL instead")
             import os
             abs_video_path = os.path.abspath(video_path)
             video_url = f"file://{abs_video_path}"
 
+        # Qwen-VL API 正确格式
+        # type 必须是 'text', 'image', 'audio', 'video' 或 'image_hw' (来自错误信息)
         message_content = [
-            {"video": video_url},
-            {"text": prompt}
+            {
+                "type": "video",
+                "video": video_url
+            },
+            {
+                "type": "text",
+                "text": prompt
+            }
         ]
 
         # Include context if provided
@@ -266,6 +275,7 @@ class QwenVisionClient:
                     response.raise_for_status()
 
                     # Parse SSE stream
+                    response_received = False
                     async for line in response.aiter_lines():
                         if line.startswith("data:"):
                             data_str = line[5:].strip()
@@ -275,19 +285,28 @@ class QwenVisionClient:
                             try:
                                 data = json.loads(data_str)
 
+                                # Check for API errors
+                                if "code" in data and data["code"] != "Success":
+                                    error_msg = data.get("message", "Unknown error")
+                                    logger.error(f"Qwen API error: {error_msg}")
+                                    yield f"[ERROR] Qwen API: {error_msg}"
+                                    break
+
                                 output = data.get("output", {})
                                 choices = output.get("choices", [])
 
                                 if choices and len(choices) > 0:
+                                    response_received = True
                                     message = choices[0].get("message", {})
                                     content = message.get("content", [])
 
                                     # Extract text from content
-                                    for item in content:
-                                        if isinstance(item, dict) and "text" in item:
-                                            yield item["text"]
-                                        elif isinstance(item, str):
-                                            yield item
+                                    if content:
+                                        for item in content:
+                                            if isinstance(item, dict) and "text" in item:
+                                                yield item["text"]
+                                            elif isinstance(item, str):
+                                                yield item
 
                                 # Check if finished
                                 finish_reason = choices[0].get("finish_reason") if choices else None
@@ -295,8 +314,13 @@ class QwenVisionClient:
                                     break
 
                             except json.JSONDecodeError:
-                                logger.warning(f"Failed to parse SSE data: {data_str}")
+                                logger.warning(f"Failed to parse SSE data: {data_str[:100]}...")
                                 continue
+
+                    # Check if any response was received
+                    if not response_received:
+                        logger.warning(f"No response received for video window {start_time:.1f}s - {end_time:.1f}s")
+                        yield "[WARNING] API 未返回分析结果"
 
         except httpx.HTTPStatusError as e:
             logger.error(f"Qwen API HTTP error: {e.response.status_code} - {e.response.text}")

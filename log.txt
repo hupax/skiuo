@@ -1,222 +1,501 @@
+Video recorder service initialized
+video-recorder.ts:94 Started recording segment 1
+video-recorder.ts:55 Video recording started
+websocket.ts:29 Connecting to analysis WebSocket: ws://localhost:8080/ws/analysis/287a5f4e-c982-4d29-a2f0-bfb9652d6c52
+RecordingPage.tsx:84 Recording started: 287a5f4e-c982-4d29-a2f0-bfb9652d6c52
+websocket.ts:35 Analysis WebSocket connected
+video-recorder.ts:133 Segment 1 complete, size: 9845926 bytes
+RecordingPage.tsx:67 Segment recorded: 0
+video-recorder.ts:179 Segment 1 uploaded successfully: {filename: 'video_1761320453611.webm', size: 9845926, sessionId: '287a5f4e-c982-4d29-a2f0-bfb9652d6c52', message: 'Video received and queued for analysis', status: 'received'}
+RecordingPage.tsx:59 Segment uploaded: {filename: 'video_1761320453611.webm', size: 9845926, sessionId: '287a5f4e-c982-4d29-a2f0-bfb9652d6c52', message: 'Video received and queued for analysis', status: 'received'}
+video-recorder.ts:94 Started recording segment 2
+websocket.ts:42 Received token:
 
-2025-10-24 00:45:41,733 - __main__ - INFO - StreamMind AI Service starting up...
-2025-10-24 00:45:41,733 - __main__ - INFO - Qwen API configured: True
-2025-10-24 00:45:41,733 - __main__ - INFO - Spring Boot gRPC: localhost:9090
+📹 [分析窗口 1/3] (0.0s - 15.0s)
+
+websocket.ts:42 Received token: 视频
+websocket.ts:42 Received token: 开始
+websocket.ts:42 Received token: 时
+websocket.ts:42 Received token: 画面
+websocket.ts:42 Received token: 较
+websocket.ts:42 Received token: 暗
+websocket.ts:42 Received token: ，
+websocket.ts:42 Received token: 随后
+websocket.ts:42 Received token: 逐渐
+websocket.ts:42 Received token: 亮
+websocket.ts:42 Received token: 起
+websocket.ts:42 Received token: ，
+websocket.ts:42 Received token: 展现出
+websocket.ts:42 Received token: 一个
+websocket.ts:42 Received token: 桌面
+websocket.ts:42 Received token: 工作
+websocket.ts:42 Received token: 环境
+websocket.ts:42 Received token: 。
+websocket.ts:42 Received token: 桌
+websocket.ts:42 Received token: 面上
+websocket.ts:42 Received token: 摆放
+websocket.ts:42 Received token: 着
+websocket.ts:42 Received token: 一台
+websocket.ts:42 Received token: 显示器
+websocket.ts:42 Received token: 、
+websocket.ts:42 Received token: 一个
+websocket.ts:42 Received token: 色彩
+websocket.ts:42 Received token: 鲜艳
+websocket.ts:42 Received token: 的
+websocket.ts:42 Received token: 机械
+websocket.ts:42 Received token: 键盘
+websocket.ts:42 Received token: 、
+websocket.ts:42 Received token: 一个
+websocket.ts:42 Received token: 遥控
+websocket.ts:42 Received token: 器
+websocket.ts:42 Received token: 、
+websocket.ts:42 Received token: 一个
+websocket.ts:42 Received token: 装
+websocket.ts:42 Received token: 有
+websocket.ts:42 Received token: 液体
+websocket.ts:42 Received token: 的
+websocket.ts:42 Received token: 透明
+websocket.ts:42 Received token: 玻璃
+websocket.ts:42 Received token: 杯
+websocket.ts:42 Received token: 以及
+websocket.ts:42 Received token: 一个
+websocket.ts:42 Received token: 小型
+websocket.ts:42 Received token: 玩
+websocket.ts:42 Received token: 偶
+websocket.ts:42 Received token: 。
+websocket.ts:42 Received token: 键盘
+websocket.ts:42 Received token: 按键
+websocket.ts:42 Received token: 颜色
+websocket.ts:42 Received token: 丰富
+websocket.ts:42 Received token: ，
+websocket.ts:42 Received token: 包括
+websocket.ts:42 Received token: 灰色
+websocket.ts:42 Received token: 、
+websocket.ts:42 Received token: 蓝色
+websocket.ts:42 Received token: 、
+websocket.ts:42 Received token: 橙
+websocket.ts:42 Received token: 色
+websocket.ts:42 Received token: 、
+websocket.ts:42 Received token: 绿色
+websocket.ts:42 Received token: 和
+websocket.ts:42 Received token: 紫色
+websocket.ts:42 Received token: 等
+websocket.ts:42 Received token: ，
+websocket.ts:42 Received token: 排列
+websocket.ts:42 Received token: 整齐
+websocket.ts:42 Received token: ，
+websocket.ts:42 Received token: 显得
+websocket.ts:42 Received token: 非常
+websocket.ts:42 Received token: 个性化
+websocket.ts:42 Received token: 。
+websocket.ts:42 Received token: 显示器
+websocket.ts:42 Received token: 屏幕上
+websocket.ts:42 Received token: 显示
+websocket.ts:42 Received token: 的是
+websocket.ts:42 Received token: 一个
+websocket.ts:42 Received token: 编程
+websocket.ts:42 Received token: 或
+websocket.ts:42 Received token: 开发
+websocket.ts:42 Received token: 相关的
+websocket.ts:42 Received token: 界面
+websocket.ts:42 Received token: ，
+websocket.ts:42 Received token: 左侧
+websocket.ts:42 Received token: 是
+websocket.ts:42 Received token: 项目
+websocket.ts:42 Received token: 结构
+websocket.ts:42 Received token: 列表
+websocket.ts:42 Received token: ，
+websocket.ts:42 Received token: 右侧
+websocket.ts:42 Received token: 是一个
+websocket.ts:42 Received token: 代码
+websocket.ts:42 Received token: 编辑
+websocket.ts:42 Received token: 器
+websocket.ts:42 Received token: 窗口
+websocket.ts:42 Received token: ，
+websocket.ts:42 Received token: 内容
+websocket.ts:42 Received token: 涉及
+websocket.ts:42 Received token: “
+websocket.ts:42 Received token: Video
+websocket.ts:42 Received token:  recording
+websocket.ts:42 Received token:  started
+websocket.ts:42 Received token: ”
+websocket.ts:42 Received token: 、“
+websocket.ts:42 Received token: Connecting
+websocket.ts:42 Received token:  to
+websocket.ts:42 Received token:  analytics
+websocket.ts:42 Received token:  web
+websocket.ts:42 Received token: server
+websocket.ts:42 Received token: ”
+websocket.ts:42 Received token: 等
+websocket.ts:42 Received token: 字样
+websocket.ts:42 Received token: ，
+websocket.ts:42 Received token: 表明
+websocket.ts:42 Received token: 用户
+websocket.ts:42 Received token: 可能
+websocket.ts:42 Received token: 正在进行
+websocket.ts:42 Received token: 某种
+websocket.ts:42 Received token: 软件
+websocket.ts:42 Received token: 开发
+websocket.ts:42 Received token: 或
+websocket.ts:42 Received token: 调试
+websocket.ts:42 Received token: 工作
+websocket.ts:42 Received token: 。
+
+
+websocket.ts:42 Received token: 在
+websocket.ts:42 Received token: 视频
+websocket.ts:42 Received token: 过程中
+websocket.ts:42 Received token: ，
+websocket.ts:42 Received token: 屏幕
+websocket.ts:42 Received token: 上的
+websocket.ts:42 Received token: 内容
+websocket.ts:42 Received token: 略有
+websocket.ts:42 Received token: 变化
+websocket.ts:42 Received token: ，
+websocket.ts:42 Received token: 例如
+websocket.ts:42 Received token: 弹
+websocket.ts:42 Received token: 出
+websocket.ts:42 Received token: 一个
+websocket.ts:42 Received token: 红色
+websocket.ts:42 Received token: 按钮
+websocket.ts:42 Received token: 的
+websocket.ts:42 Received token: 对话
+websocket.ts:42 Received token: 框
+websocket.ts:42 Received token: ，
+websocket.ts:42 Received token: 提示
+websocket.ts:42 Received token: “
+websocket.ts:42 Received token: 停止
+websocket.ts:42 Received token: 录制
+websocket.ts:42 Received token: ”，
+websocket.ts:42 Received token: 这
+websocket.ts:42 Received token: 说明
+websocket.ts:42 Received token: 用户
+RecordingPage.tsx:120 Closing WebSocket after timeout
+websocket.ts:95 Analysis WebSocket closed by client
+websocket.ts:52 WebSocket closed: 1000 Client closed
+video-recorder.ts:133 Segment 2 complete, size: 9697033 bytes
+RecordingPage.tsx:67 Segment recorded: 1
+video-recorder.ts:179 Segment 2 uploaded successfully: {filename: 'video_1761320483702.webm', size: 9697033, sessionId: '287a5f4e-c982-4d29-a2f0-bfb9652d6c52', message: 'Video received and queued for analysis', status: 'received'}
+RecordingPage.tsx:59 Segment uploaded: {filename: 'video_1761320483702.webm', size: 9697033, sessionId: '287a5f4e-c982-4d29-a2f0-bfb9652d6c52', message: 'Video received and queued for analysis', status: 'received'}
+video-recorder.ts:94 Started recording segment 3
+video-recorder.ts:133 Segment 3 complete, size: 9781348 bytes
+RecordingPage.tsx:67 Segment recorded: 2
+video-recorder.ts:179 Segment 3 uploaded successfully: {filename: 'video_1761320513782.webm', size: 9781348, sessionId: '287a5f4e-c982-4d29-a2f0-bfb9652d6c52', message: 'Video received and queued for analysis', status: 'received'}
+RecordingPage.tsx:59 Segment uploaded: {filename: 'video_1761320513782.webm', size: 9781348, sessionId: '287a5f4e-c982-4d29-a2f0-bfb9652d6c52', message: 'Video received and queued for analysis', status: 'received'}
+video-recorder.ts:94 Started recording segment 4
+video-recorder.ts:133 Segment 4 complete, size: 9684802 bytes
+RecordingPage.tsx:67 Segment recorded: 3
+video-recorder.ts:179 Segment 4 uploaded successfully: {filename: 'video_1761320543870.webm', size: 9684802, sessionId: '287a5f4e-c982-4d29-a2f0-bfb9652d6c52', message: 'Video received and queued for analysis', status: 'received'}
+RecordingPage.tsx:59 Segment uploaded: {filename: 'video_1761320543870.webm', size: 9684802, sessionId: '287a5f4e-c982-4d29-a2f0-bfb9652d6c52', message: 'Video received and queued for analysis', status: 'received'}
+video-recorder.ts:94 Started recording segment 5
+video-recorder.ts:133 Segment 5 complete, size: 9508557 bytes
+RecordingPage.tsx:67 Segment recorded: 4
+video-recorder.ts:179 Segment 5 uploaded successfully: {filename: 'video_1761320573959.webm', size: 9508557, sessionId: '287a5f4e-c982-4d29-a2f0-bfb9652d6c52', message: 'Video received and queued for analysis', status: 'received'}
+RecordingPage.tsx:59 Segment uploaded: {filename: 'video_1761320573959.webm', size: 9508557, sessionId: '287a5f4e-c982-4d29-a2f0-bfb9652d6c52', message: 'Video received and queued for analysis', status: 'received'}
+video-recorder.ts:94 Started recording segment 6
+video-recorder.ts:133 Segment 6 complete, size: 9610842 bytes
+RecordingPage.tsx:67 Segment recorded: 5
+video-recorder.ts:179 Segment 6 uploaded successfully: {filename: 'video_1761320604287.webm', size: 9610842, sessionId: '287a5f4e-c982-4d29-a2f0-bfb9652d6c52', message: 'Video received and queued for analysis', status: 'received'}
+RecordingPage.tsx:59 Segment uploaded: {filename: 'video_1761320604287.webm', size: 9610842, sessionId: '287a5f4e-c982-4d29-a2f0-bfb9652d6c52', message: 'Video received and queued for analysis', status: 'received'}
+video-recorder.ts:94 Started recording segment 7
+video-recorder.ts:204 Video recording stopped, total segments: 7
+video-recorder.ts:220 Video recorder service closed
+video-recorder.ts:133 Segment 7 complete, size: 1820370 bytes
+RecordingPage.tsx:67 Segment recorded: 6
+video-recorder.ts:179 Segment 7 uploaded successfully: {filename: 'video_1761320609999.webm', size: 1820370, sessionId: '287a5f4e-c982-4d29-a2f0-bfb9652d6c52', message: 'Video received and queued for analysis', status: 'received'}
+RecordingPage.tsx:59 Segment uploaded: {filename: 'video_1761320609999.webm', size: 1820370, sessionId: '287a5f4e-c982-4d29-a2f0-bfb9652d6c52', message: 'Video received and queued for analysis', status: 'received'}filename: "video_1761320609999.webm"message: "Video received and queued for analysis"sessionId: "287a5f4e-c982-4d29-a2f0-bfb9652d6c52"size: 1820370status: "received"[[Prototype]]: Object
+RecordingPage.tsx:110 Recording stopped: 287a5f4e-c982-4d29-a2f0-bfb9652d6c52
+RecordingPage.tsx:111 WebSocket remains open to receive remaining analysis results...
+
+
+
+
+
+/Users/hupax/skiuo/ai-service/.venv/bin/python /Users/hupax/skiuo/ai-service/app/main.py
+2025-10-24 23:39:48,229 - app.minio_client - INFO - Minio client initialized: bucket=test, endpoint=https://minio-api.supanx.net
+INFO:     Started server process [40524]
+INFO:     Waiting for application startup.
+2025-10-24 23:39:48,258 - __main__ - INFO - StreamMind AI Service starting up...
+2025-10-24 23:39:48,258 - __main__ - INFO - Qwen API configured: True
+2025-10-24 23:39:48,258 - __main__ - INFO - Spring Boot gRPC: localhost:9090
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-2025-10-24 00:46:28,958 - __main__ - INFO - Received video analysis request for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934: /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761237988821.webm
-2025-10-24 00:46:28,959 - __main__ - INFO - Slicing video with sliding window...
-2025-10-24 00:46:29,126 - app.video_processor - INFO - Video duration: 28.36 seconds
-2025-10-24 00:46:29,164 - app.video_processor - DEBUG - FFmpeg command: ffmpeg -i /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761237988821.webm -ss 0.0 -t 15.0 -c copy -y temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_000_0_15.webm
-2025-10-24 00:46:29,164 - app.video_processor - INFO - Created window 0: 0.00s - 15.00s (15.00s)
-2025-10-24 00:46:29,203 - app.video_processor - DEBUG - FFmpeg command: ffmpeg -i /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761237988821.webm -ss 10.0 -t 15.0 -c copy -y temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_001_10_25.webm
-2025-10-24 00:46:29,204 - app.video_processor - INFO - Created window 1: 10.00s - 25.00s (15.00s)
-2025-10-24 00:46:29,241 - app.video_processor - DEBUG - FFmpeg command: ffmpeg -i /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761237988821.webm -ss 20.0 -t 8.359532999999999 -c copy -y temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_002_20_28.webm
-2025-10-24 00:46:29,241 - app.video_processor - INFO - Created window 2: 20.00s - 28.36s (8.36s)
-2025-10-24 00:46:29,241 - app.video_processor - INFO - Created 3 windows for video (duration: 28.36s)
-2025-10-24 00:46:29,241 - __main__ - INFO - Created 3 windows for analysis
-2025-10-24 00:46:29,241 - __main__ - INFO - Analyzing window 0/3: 0.0s - 15.0s
-2025-10-24 00:46:29,241 - grpc._cython.cygrpc - DEBUG - Using AsyncIOEngine.POLLER as I/O engine
-2025-10-24 00:46:29,243 - app.grpc_client - INFO - gRPC client connected to localhost:9090
-2025-10-24 00:46:29,345 - app.grpc_client - DEBUG - Saved token 0 for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, ID: 8729
-2025-10-24 00:46:29,346 - app.qwen_client - INFO - Analyzing video window: 0.0s - 15.0s
-2025-10-24 00:46:29,346 - app.qwen_client - DEBUG - Request payload: {"model": "qwen-vl-max", "input": {"messages": [{"role": "user", "content": [{"video": "file:///Users/hupax/skiuo/ai-service/temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_000_0_15.webm"}, {"text": "请分析这段视频内容（时间范围：0.0秒 - 15.0秒）。\n\n这是第一个分析窗口，请完整描述视频内容。\n\n分析要求：\n1. **描述视频中发生的事情**：\n   - 用户在做什么活动？\n   - 屏幕上显示了什么内容？\n   - 有哪些关键操作或变化？\n\n2. **保持连贯性**：\n   - 结合之前的上下文理解当前活动\n   - 只描述这个时间段内新发生的事情\n   - 避免重复之前已经描述过的内容\n\n3. **输出格式**：\n   - 用自然、流畅的中文叙述\n   - 就像在记录一个连续的过程\n   - 不要使用固定的格式或标题\n\n
-2025-10-24 00:46:29,350 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2025-10-24 00:46:29,353 - httpx - DEBUG - load_verify_locations cafile='/Users/hupax/skiuo/ai-service/.venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2025-10-24 00:46:29,374 - httpcore.connection - DEBUG - connect_tcp.started host='dashscope.aliyuncs.com' port=443 local_address=None timeout=120 socket_options=None
-2025-10-24 00:46:29,377 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x104edf020>
-2025-10-24 00:46:29,377 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x105ba9350> server_hostname='dashscope.aliyuncs.com' timeout=120
-2025-10-24 00:46:29,690 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x102fed070>
-2025-10-24 00:46:29,690 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2025-10-24 00:46:29,691 - httpcore.http11 - DEBUG - send_request_headers.complete
-2025-10-24 00:46:29,691 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2025-10-24 00:46:29,691 - httpcore.http11 - DEBUG - send_request_body.complete
-2025-10-24 00:46:29,691 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2025-10-24 00:46:30,319 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'vary', b'Origin,Access-Control-Request-Method,Access-Control-Request-Headers'), (b'x-request-id', b'44f96dca-6a52-4ff4-af4a-b0730256f140'), (b'content-type', b'text/event-stream;charset=UTF-8'), (b'x-dashscope-call-gateway', b'true'), (b'x-dashscope-timeout', b'298'), (b'x-dashscope-finished', b'false'), (b'req-cost-time', b'519'), (b'req-arrive-time', b'1761237990122'), (b'resp-start-time', b'1761237990641'), (b'x-envoy-upstream-service-time', b'510'), (b'set-cookie', b'acw_tc=44f96dca-6a52-4ff4-af4a-b0730256f140b046f2af2e92c99c2035b068a79ee8b1;path=/;HttpOnly;Max-Age=1800'), (b'date', b'Thu, 23 Oct 2025 16:46:30 GMT'), (b'server', b'istio-envoy'), (b'transfer-encoding', b'chunked')])
-2025-10-24 00:46:30,320 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
-2025-10-24 00:46:30,320 - app.qwen_client - DEBUG - Response headers: {'vary': 'Origin,Access-Control-Request-Method,Access-Control-Request-Headers', 'x-request-id': '44f96dca-6a52-4ff4-af4a-b0730256f140', 'content-type': 'text/event-stream;charset=UTF-8', 'x-dashscope-call-gateway': 'true', 'x-dashscope-timeout': '298', 'x-dashscope-finished': 'false', 'req-cost-time': '519', 'req-arrive-time': '1761237990122', 'resp-start-time': '1761237990641', 'x-envoy-upstream-service-time': '510', 'set-cookie': 'acw_tc=44f96dca-6a52-4ff4-af4a-b0730256f140b046f2af2e92c99c2035b068a79ee8b1;path=/;HttpOnly;Max-Age=1800', 'date': 'Thu, 23 Oct 2025 16:46:30 GMT', 'server': 'istio-envoy', 'transfer-encoding': 'chunked'}
-2025-10-24 00:46:30,320 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2025-10-24 00:46:30,320 - app.qwen_client - DEBUG - [Line 1] id:1
-2025-10-24 00:46:30,320 - app.qwen_client - DEBUG - [Line 2] event:error
-2025-10-24 00:46:30,320 - app.qwen_client - DEBUG - [Line 3] :HTTP_STATUS/400
-2025-10-24 00:46:30,320 - app.qwen_client - DEBUG - [Line 4] data:{"code":"InvalidParameter","message":"<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.","request_id":"44f96dca-6a52-4ff4-
-2025-10-24 00:46:30,320 - app.qwen_client - DEBUG - Parsed SSE data: {"code": "InvalidParameter", "message": "<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.", "request_id": "44f96dca-6a52-4ff4-af4a-b0730256f140"}
-2025-10-24 00:46:30,320 - app.qwen_client - DEBUG - [Line 5] 
-2025-10-24 00:46:30,321 - httpcore.http11 - DEBUG - receive_response_body.complete
-2025-10-24 00:46:30,322 - httpcore.http11 - DEBUG - response_closed.started
-2025-10-24 00:46:30,322 - httpcore.http11 - DEBUG - response_closed.complete
-2025-10-24 00:46:30,323 - app.qwen_client - INFO - Total lines received: 5, tokens yielded: 0
-2025-10-24 00:46:30,323 - httpcore.connection - DEBUG - close.started
-2025-10-24 00:46:30,323 - httpcore.connection - DEBUG - close.complete
-2025-10-24 00:46:30,323 - __main__ - INFO - Analyzing window 1/3: 10.0s - 25.0s
-2025-10-24 00:46:30,335 - app.grpc_client - DEBUG - Saved token 1 for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, ID: 8730
-2025-10-24 00:46:30,335 - app.qwen_client - INFO - Analyzing video window: 10.0s - 25.0s
-2025-10-24 00:46:30,335 - app.qwen_client - DEBUG - Request payload: {"model": "qwen-vl-max", "input": {"messages": [{"role": "user", "content": [{"video": "file:///Users/hupax/skiuo/ai-service/temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_001_10_25.webm"}, {"text": "请分析这段视频内容（时间范围：10.0秒 - 25.0秒）。\n\n这是第一个分析窗口，请完整描述视频内容。\n\n分析要求：\n1. **描述视频中发生的事情**：\n   - 用户在做什么活动？\n   - 屏幕上显示了什么内容？\n   - 有哪些关键操作或变化？\n\n2. **保持连贯性**：\n   - 结合之前的上下文理解当前活动\n   - 只描述这个时间段内新发生的事情\n   - 避免重复之前已经描述过的内容\n\n3. **输出格式**：\n   - 用自然、流畅的中文叙述\n   - 就像在记录一个连续的过程\n   - 不要使用固定的格式或标题\n
-2025-10-24 00:46:30,336 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2025-10-24 00:46:30,336 - httpx - DEBUG - load_verify_locations cafile='/Users/hupax/skiuo/ai-service/.venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2025-10-24 00:46:30,345 - httpcore.connection - DEBUG - connect_tcp.started host='dashscope.aliyuncs.com' port=443 local_address=None timeout=120 socket_options=None
-2025-10-24 00:46:30,349 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d360c0>
-2025-10-24 00:46:30,349 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x105bab9d0> server_hostname='dashscope.aliyuncs.com' timeout=120
-2025-10-24 00:46:30,558 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d36120>
-2025-10-24 00:46:30,558 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2025-10-24 00:46:30,558 - httpcore.http11 - DEBUG - send_request_headers.complete
-2025-10-24 00:46:30,558 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2025-10-24 00:46:30,558 - httpcore.http11 - DEBUG - send_request_body.complete
-2025-10-24 00:46:30,558 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2025-10-24 00:46:30,966 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'vary', b'Origin,Access-Control-Request-Method,Access-Control-Request-Headers'), (b'x-request-id', b'b638e424-d0ca-4fa3-816a-dda19de5674a'), (b'content-type', b'text/event-stream;charset=UTF-8'), (b'x-dashscope-call-gateway', b'true'), (b'x-dashscope-timeout', b'298'), (b'x-dashscope-finished', b'false'), (b'req-cost-time', b'303'), (b'req-arrive-time', b'1761237990982'), (b'resp-start-time', b'1761237991286'), (b'x-envoy-upstream-service-time', b'295'), (b'set-cookie', b'acw_tc=b638e424-d0ca-4fa3-816a-dda19de5674a26d700e75aa86018bddcc0f687702d5a;path=/;HttpOnly;Max-Age=1800'), (b'date', b'Thu, 23 Oct 2025 16:46:30 GMT'), (b'server', b'istio-envoy'), (b'transfer-encoding', b'chunked')])
-2025-10-24 00:46:30,967 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
-2025-10-24 00:46:30,967 - app.qwen_client - DEBUG - Response headers: {'vary': 'Origin,Access-Control-Request-Method,Access-Control-Request-Headers', 'x-request-id': 'b638e424-d0ca-4fa3-816a-dda19de5674a', 'content-type': 'text/event-stream;charset=UTF-8', 'x-dashscope-call-gateway': 'true', 'x-dashscope-timeout': '298', 'x-dashscope-finished': 'false', 'req-cost-time': '303', 'req-arrive-time': '1761237990982', 'resp-start-time': '1761237991286', 'x-envoy-upstream-service-time': '295', 'set-cookie': 'acw_tc=b638e424-d0ca-4fa3-816a-dda19de5674a26d700e75aa86018bddcc0f687702d5a;path=/;HttpOnly;Max-Age=1800', 'date': 'Thu, 23 Oct 2025 16:46:30 GMT', 'server': 'istio-envoy', 'transfer-encoding': 'chunked'}
-2025-10-24 00:46:30,967 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2025-10-24 00:46:30,967 - app.qwen_client - DEBUG - [Line 1] id:1
-2025-10-24 00:46:30,967 - app.qwen_client - DEBUG - [Line 2] event:error
-2025-10-24 00:46:30,967 - app.qwen_client - DEBUG - [Line 3] :HTTP_STATUS/400
-2025-10-24 00:46:30,967 - app.qwen_client - DEBUG - [Line 4] data:{"code":"InvalidParameter","message":"<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.","request_id":"b638e424-d0ca-4fa3-
-2025-10-24 00:46:30,967 - app.qwen_client - DEBUG - Parsed SSE data: {"code": "InvalidParameter", "message": "<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.", "request_id": "b638e424-d0ca-4fa3-816a-dda19de5674a"}
-2025-10-24 00:46:30,968 - app.qwen_client - DEBUG - [Line 5] 
-2025-10-24 00:46:30,968 - httpcore.http11 - DEBUG - receive_response_body.complete
-2025-10-24 00:46:30,968 - httpcore.http11 - DEBUG - response_closed.started
-2025-10-24 00:46:30,968 - httpcore.http11 - DEBUG - response_closed.complete
-2025-10-24 00:46:30,968 - app.qwen_client - INFO - Total lines received: 5, tokens yielded: 0
-2025-10-24 00:46:30,968 - httpcore.connection - DEBUG - close.started
-2025-10-24 00:46:30,969 - httpcore.connection - DEBUG - close.complete
-2025-10-24 00:46:30,969 - __main__ - INFO - Analyzing window 2/3: 20.0s - 28.4s
-2025-10-24 00:46:30,997 - app.grpc_client - DEBUG - Saved token 2 for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, ID: 8731
-2025-10-24 00:46:30,997 - app.qwen_client - INFO - Analyzing video window: 20.0s - 28.4s
-2025-10-24 00:46:30,997 - app.qwen_client - DEBUG - Request payload: {"model": "qwen-vl-max", "input": {"messages": [{"role": "user", "content": [{"video": "file:///Users/hupax/skiuo/ai-service/temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_002_20_28.webm"}, {"text": "请分析这段视频内容（时间范围：20.0秒 - 28.4秒）。\n\n这是第一个分析窗口，请完整描述视频内容。\n\n分析要求：\n1. **描述视频中发生的事情**：\n   - 用户在做什么活动？\n   - 屏幕上显示了什么内容？\n   - 有哪些关键操作或变化？\n\n2. **保持连贯性**：\n   - 结合之前的上下文理解当前活动\n   - 只描述这个时间段内新发生的事情\n   - 避免重复之前已经描述过的内容\n\n3. **输出格式**：\n   - 用自然、流畅的中文叙述\n   - 就像在记录一个连续的过程\n   - 不要使用固定的格式或标题\n
-2025-10-24 00:46:30,998 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2025-10-24 00:46:30,998 - httpx - DEBUG - load_verify_locations cafile='/Users/hupax/skiuo/ai-service/.venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2025-10-24 00:46:31,007 - httpcore.connection - DEBUG - connect_tcp.started host='dashscope.aliyuncs.com' port=443 local_address=None timeout=120 socket_options=None
-2025-10-24 00:46:31,010 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d37950>
-2025-10-24 00:46:31,010 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x105d54cd0> server_hostname='dashscope.aliyuncs.com' timeout=120
-2025-10-24 00:46:31,234 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d37890>
-2025-10-24 00:46:31,234 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2025-10-24 00:46:31,235 - httpcore.http11 - DEBUG - send_request_headers.complete
-2025-10-24 00:46:31,235 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2025-10-24 00:46:31,235 - httpcore.http11 - DEBUG - send_request_body.complete
-2025-10-24 00:46:31,235 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2025-10-24 00:46:31,733 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'vary', b'Origin,Access-Control-Request-Method,Access-Control-Request-Headers'), (b'x-request-id', b'd25a5642-c9b1-4ca6-ad02-2df975132d1f'), (b'content-type', b'text/event-stream;charset=UTF-8'), (b'x-dashscope-call-gateway', b'true'), (b'x-dashscope-timeout', b'298'), (b'x-dashscope-finished', b'false'), (b'req-cost-time', b'341'), (b'req-arrive-time', b'1761237991702'), (b'resp-start-time', b'1761237992043'), (b'x-envoy-upstream-service-time', b'317'), (b'set-cookie', b'acw_tc=d25a5642-c9b1-4ca6-ad02-2df975132d1f405fd61ad47c0f5b3a91a7cd8f200636;path=/;HttpOnly;Max-Age=1800'), (b'date', b'Thu, 23 Oct 2025 16:46:31 GMT'), (b'server', b'istio-envoy'), (b'transfer-encoding', b'chunked')])
-2025-10-24 00:46:31,733 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
-2025-10-24 00:46:31,733 - app.qwen_client - DEBUG - Response headers: {'vary': 'Origin,Access-Control-Request-Method,Access-Control-Request-Headers', 'x-request-id': 'd25a5642-c9b1-4ca6-ad02-2df975132d1f', 'content-type': 'text/event-stream;charset=UTF-8', 'x-dashscope-call-gateway': 'true', 'x-dashscope-timeout': '298', 'x-dashscope-finished': 'false', 'req-cost-time': '341', 'req-arrive-time': '1761237991702', 'resp-start-time': '1761237992043', 'x-envoy-upstream-service-time': '317', 'set-cookie': 'acw_tc=d25a5642-c9b1-4ca6-ad02-2df975132d1f405fd61ad47c0f5b3a91a7cd8f200636;path=/;HttpOnly;Max-Age=1800', 'date': 'Thu, 23 Oct 2025 16:46:31 GMT', 'server': 'istio-envoy', 'transfer-encoding': 'chunked'}
-2025-10-24 00:46:31,734 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2025-10-24 00:46:31,734 - app.qwen_client - DEBUG - [Line 1] id:1
-2025-10-24 00:46:31,734 - app.qwen_client - DEBUG - [Line 2] event:error
-2025-10-24 00:46:31,734 - app.qwen_client - DEBUG - [Line 3] :HTTP_STATUS/400
-2025-10-24 00:46:31,734 - app.qwen_client - DEBUG - [Line 4] data:{"code":"InvalidParameter","message":"<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.","request_id":"d25a5642-c9b1-4ca6-
-2025-10-24 00:46:31,734 - app.qwen_client - DEBUG - Parsed SSE data: {"code": "InvalidParameter", "message": "<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.", "request_id": "d25a5642-c9b1-4ca6-ad02-2df975132d1f"}
-2025-10-24 00:46:31,734 - app.qwen_client - DEBUG - [Line 5] 
-2025-10-24 00:46:31,734 - httpcore.http11 - DEBUG - receive_response_body.complete
-2025-10-24 00:46:31,734 - httpcore.http11 - DEBUG - response_closed.started
-2025-10-24 00:46:31,735 - httpcore.http11 - DEBUG - response_closed.complete
-2025-10-24 00:46:31,735 - app.qwen_client - INFO - Total lines received: 5, tokens yielded: 0
-2025-10-24 00:46:31,735 - httpcore.connection - DEBUG - close.started
-2025-10-24 00:46:31,735 - httpcore.connection - DEBUG - close.complete
-2025-10-24 00:46:31,736 - __main__ - INFO - Video analysis completed for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, total tokens: 3
-2025-10-24 00:46:31,739 - app.video_processor - INFO - Cleaned up windows for session: ec47fd1a-ce63-4230-a2e4-ea9e63edf934
-INFO:     127.0.0.1:63417 - "POST /analyze-video HTTP/1.1" 200 OK
-2025-10-24 00:46:57,949 - __main__ - INFO - Received video analysis request for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934: /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761238017928.webm
-2025-10-24 00:46:57,950 - __main__ - INFO - Slicing video with sliding window...
-2025-10-24 00:46:58,056 - app.video_processor - INFO - Video duration: 26.96 seconds
-2025-10-24 00:46:58,091 - app.video_processor - DEBUG - FFmpeg command: ffmpeg -i /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761238017928.webm -ss 0.0 -t 15.0 -c copy -y temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_000_0_15.webm
-2025-10-24 00:46:58,091 - app.video_processor - INFO - Created window 0: 0.00s - 15.00s (15.00s)
-2025-10-24 00:46:58,126 - app.video_processor - DEBUG - FFmpeg command: ffmpeg -i /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761238017928.webm -ss 10.0 -t 15.0 -c copy -y temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_001_10_25.webm
-2025-10-24 00:46:58,127 - app.video_processor - INFO - Created window 1: 10.00s - 25.00s (15.00s)
-2025-10-24 00:46:58,174 - app.video_processor - DEBUG - FFmpeg command: ffmpeg -i /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761238017928.webm -ss 20.0 -t 6.960359 -c copy -y temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_002_20_26.webm
-2025-10-24 00:46:58,174 - app.video_processor - INFO - Created window 2: 20.00s - 26.96s (6.96s)
-2025-10-24 00:46:58,174 - app.video_processor - INFO - Created 3 windows for video (duration: 26.96s)
-2025-10-24 00:46:58,174 - __main__ - INFO - Created 3 windows for analysis
-2025-10-24 00:46:58,174 - __main__ - INFO - Analyzing window 0/3: 0.0s - 15.0s
-2025-10-24 00:46:58,208 - app.grpc_client - DEBUG - Saved token 0 for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, ID: 8732
-2025-10-24 00:46:58,208 - app.qwen_client - INFO - Analyzing video window: 0.0s - 15.0s
-2025-10-24 00:46:58,208 - app.qwen_client - DEBUG - Request payload: {"model": "qwen-vl-max", "input": {"messages": [{"role": "user", "content": [{"video": "file:///Users/hupax/skiuo/ai-service/temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_000_0_15.webm"}, {"text": "请分析这段视频内容（时间范围：0.0秒 - 15.0秒）。\n\n这是第一个分析窗口，请完整描述视频内容。\n\n分析要求：\n1. **描述视频中发生的事情**：\n   - 用户在做什么活动？\n   - 屏幕上显示了什么内容？\n   - 有哪些关键操作或变化？\n\n2. **保持连贯性**：\n   - 结合之前的上下文理解当前活动\n   - 只描述这个时间段内新发生的事情\n   - 避免重复之前已经描述过的内容\n\n3. **输出格式**：\n   - 用自然、流畅的中文叙述\n   - 就像在记录一个连续的过程\n   - 不要使用固定的格式或标题\n\n
-2025-10-24 00:46:58,210 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2025-10-24 00:46:58,212 - httpx - DEBUG - load_verify_locations cafile='/Users/hupax/skiuo/ai-service/.venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2025-10-24 00:46:58,218 - httpcore.connection - DEBUG - connect_tcp.started host='dashscope.aliyuncs.com' port=443 local_address=None timeout=120 socket_options=None
-2025-10-24 00:46:58,223 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d5da60>
-2025-10-24 00:46:58,223 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x105d551d0> server_hostname='dashscope.aliyuncs.com' timeout=120
-2025-10-24 00:46:58,433 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d5d970>
-2025-10-24 00:46:58,434 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2025-10-24 00:46:58,434 - httpcore.http11 - DEBUG - send_request_headers.complete
-2025-10-24 00:46:58,434 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2025-10-24 00:46:58,435 - httpcore.http11 - DEBUG - send_request_body.complete
-2025-10-24 00:46:58,435 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2025-10-24 00:46:59,111 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'vary', b'Origin,Access-Control-Request-Method,Access-Control-Request-Headers'), (b'x-request-id', b'd4d68112-1325-4d45-b148-a182ec9ddd5f'), (b'content-type', b'text/event-stream;charset=UTF-8'), (b'x-dashscope-call-gateway', b'true'), (b'x-dashscope-timeout', b'298'), (b'x-dashscope-finished', b'false'), (b'req-cost-time', b'568'), (b'req-arrive-time', b'1761238018851'), (b'resp-start-time', b'1761238019419'), (b'x-envoy-upstream-service-time', b'560'), (b'set-cookie', b'acw_tc=d4d68112-1325-4d45-b148-a182ec9ddd5f2ae0f06c35a47816dddd8f32d7ec69fe;path=/;HttpOnly;Max-Age=1800'), (b'date', b'Thu, 23 Oct 2025 16:46:59 GMT'), (b'server', b'istio-envoy'), (b'transfer-encoding', b'chunked')])
-2025-10-24 00:46:59,115 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
-2025-10-24 00:46:59,115 - app.qwen_client - DEBUG - Response headers: {'vary': 'Origin,Access-Control-Request-Method,Access-Control-Request-Headers', 'x-request-id': 'd4d68112-1325-4d45-b148-a182ec9ddd5f', 'content-type': 'text/event-stream;charset=UTF-8', 'x-dashscope-call-gateway': 'true', 'x-dashscope-timeout': '298', 'x-dashscope-finished': 'false', 'req-cost-time': '568', 'req-arrive-time': '1761238018851', 'resp-start-time': '1761238019419', 'x-envoy-upstream-service-time': '560', 'set-cookie': 'acw_tc=d4d68112-1325-4d45-b148-a182ec9ddd5f2ae0f06c35a47816dddd8f32d7ec69fe;path=/;HttpOnly;Max-Age=1800', 'date': 'Thu, 23 Oct 2025 16:46:59 GMT', 'server': 'istio-envoy', 'transfer-encoding': 'chunked'}
-2025-10-24 00:46:59,116 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2025-10-24 00:46:59,116 - app.qwen_client - DEBUG - [Line 1] id:1
-2025-10-24 00:46:59,116 - app.qwen_client - DEBUG - [Line 2] event:error
-2025-10-24 00:46:59,116 - app.qwen_client - DEBUG - [Line 3] :HTTP_STATUS/400
-2025-10-24 00:46:59,116 - app.qwen_client - DEBUG - [Line 4] data:{"code":"InvalidParameter","message":"<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.","request_id":"d4d68112-1325-4d45-
-2025-10-24 00:46:59,116 - app.qwen_client - DEBUG - Parsed SSE data: {"code": "InvalidParameter", "message": "<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.", "request_id": "d4d68112-1325-4d45-b148-a182ec9ddd5f"}
-2025-10-24 00:46:59,116 - app.qwen_client - DEBUG - [Line 5] 
-2025-10-24 00:46:59,116 - httpcore.http11 - DEBUG - receive_response_body.complete
-2025-10-24 00:46:59,116 - httpcore.http11 - DEBUG - response_closed.started
-2025-10-24 00:46:59,116 - httpcore.http11 - DEBUG - response_closed.complete
-2025-10-24 00:46:59,116 - app.qwen_client - INFO - Total lines received: 5, tokens yielded: 0
-2025-10-24 00:46:59,116 - httpcore.connection - DEBUG - close.started
-2025-10-24 00:46:59,117 - httpcore.connection - DEBUG - close.complete
-2025-10-24 00:46:59,117 - __main__ - INFO - Analyzing window 1/3: 10.0s - 25.0s
-2025-10-24 00:46:59,136 - app.grpc_client - DEBUG - Saved token 1 for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, ID: 8733
-2025-10-24 00:46:59,136 - app.qwen_client - INFO - Analyzing video window: 10.0s - 25.0s
-2025-10-24 00:46:59,136 - app.qwen_client - DEBUG - Request payload: {"model": "qwen-vl-max", "input": {"messages": [{"role": "user", "content": [{"video": "file:///Users/hupax/skiuo/ai-service/temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_001_10_25.webm"}, {"text": "请分析这段视频内容（时间范围：10.0秒 - 25.0秒）。\n\n这是第一个分析窗口，请完整描述视频内容。\n\n分析要求：\n1. **描述视频中发生的事情**：\n   - 用户在做什么活动？\n   - 屏幕上显示了什么内容？\n   - 有哪些关键操作或变化？\n\n2. **保持连贯性**：\n   - 结合之前的上下文理解当前活动\n   - 只描述这个时间段内新发生的事情\n   - 避免重复之前已经描述过的内容\n\n3. **输出格式**：\n   - 用自然、流畅的中文叙述\n   - 就像在记录一个连续的过程\n   - 不要使用固定的格式或标题\n
-2025-10-24 00:46:59,141 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2025-10-24 00:46:59,141 - httpx - DEBUG - load_verify_locations cafile='/Users/hupax/skiuo/ai-service/.venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2025-10-24 00:46:59,147 - httpcore.connection - DEBUG - connect_tcp.started host='dashscope.aliyuncs.com' port=443 local_address=None timeout=120 socket_options=None
-2025-10-24 00:46:59,149 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d37950>
-2025-10-24 00:46:59,149 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x105d54550> server_hostname='dashscope.aliyuncs.com' timeout=120
-2025-10-24 00:46:59,343 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d37740>
-2025-10-24 00:46:59,343 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2025-10-24 00:46:59,343 - httpcore.http11 - DEBUG - send_request_headers.complete
-2025-10-24 00:46:59,343 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2025-10-24 00:46:59,343 - httpcore.http11 - DEBUG - send_request_body.complete
-2025-10-24 00:46:59,343 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2025-10-24 00:46:59,906 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'vary', b'Origin,Access-Control-Request-Method,Access-Control-Request-Headers'), (b'x-request-id', b'0e29fad7-b103-444d-b6ca-f4d18f7d8d6f'), (b'content-type', b'text/event-stream;charset=UTF-8'), (b'x-dashscope-call-gateway', b'true'), (b'x-dashscope-timeout', b'298'), (b'x-dashscope-finished', b'false'), (b'req-cost-time', b'458'), (b'req-arrive-time', b'1761238019755'), (b'resp-start-time', b'1761238020214'), (b'x-envoy-upstream-service-time', b'450'), (b'set-cookie', b'acw_tc=0e29fad7-b103-444d-b6ca-f4d18f7d8d6fa3228d13ea4962d3534677016166c756;path=/;HttpOnly;Max-Age=1800'), (b'date', b'Thu, 23 Oct 2025 16:46:59 GMT'), (b'server', b'istio-envoy'), (b'transfer-encoding', b'chunked')])
-2025-10-24 00:46:59,907 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
-2025-10-24 00:46:59,907 - app.qwen_client - DEBUG - Response headers: {'vary': 'Origin,Access-Control-Request-Method,Access-Control-Request-Headers', 'x-request-id': '0e29fad7-b103-444d-b6ca-f4d18f7d8d6f', 'content-type': 'text/event-stream;charset=UTF-8', 'x-dashscope-call-gateway': 'true', 'x-dashscope-timeout': '298', 'x-dashscope-finished': 'false', 'req-cost-time': '458', 'req-arrive-time': '1761238019755', 'resp-start-time': '1761238020214', 'x-envoy-upstream-service-time': '450', 'set-cookie': 'acw_tc=0e29fad7-b103-444d-b6ca-f4d18f7d8d6fa3228d13ea4962d3534677016166c756;path=/;HttpOnly;Max-Age=1800', 'date': 'Thu, 23 Oct 2025 16:46:59 GMT', 'server': 'istio-envoy', 'transfer-encoding': 'chunked'}
-2025-10-24 00:46:59,908 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2025-10-24 00:46:59,908 - app.qwen_client - DEBUG - [Line 1] id:1
-2025-10-24 00:46:59,908 - app.qwen_client - DEBUG - [Line 2] event:error
-2025-10-24 00:46:59,908 - app.qwen_client - DEBUG - [Line 3] :HTTP_STATUS/400
-2025-10-24 00:46:59,908 - app.qwen_client - DEBUG - [Line 4] data:{"code":"InvalidParameter","message":"<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.","request_id":"0e29fad7-b103-444d-
-2025-10-24 00:46:59,908 - app.qwen_client - DEBUG - Parsed SSE data: {"code": "InvalidParameter", "message": "<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.", "request_id": "0e29fad7-b103-444d-b6ca-f4d18f7d8d6f"}
-2025-10-24 00:46:59,908 - app.qwen_client - DEBUG - [Line 5] 
-2025-10-24 00:46:59,909 - httpcore.http11 - DEBUG - receive_response_body.complete
-2025-10-24 00:46:59,909 - httpcore.http11 - DEBUG - response_closed.started
-2025-10-24 00:46:59,909 - httpcore.http11 - DEBUG - response_closed.complete
-2025-10-24 00:46:59,909 - app.qwen_client - INFO - Total lines received: 5, tokens yielded: 0
-2025-10-24 00:46:59,909 - httpcore.connection - DEBUG - close.started
-2025-10-24 00:46:59,909 - httpcore.connection - DEBUG - close.complete
-2025-10-24 00:46:59,909 - __main__ - INFO - Analyzing window 2/3: 20.0s - 27.0s
-2025-10-24 00:46:59,930 - app.grpc_client - DEBUG - Saved token 2 for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, ID: 8734
-2025-10-24 00:46:59,931 - app.qwen_client - INFO - Analyzing video window: 20.0s - 27.0s
-2025-10-24 00:46:59,931 - app.qwen_client - DEBUG - Request payload: {"model": "qwen-vl-max", "input": {"messages": [{"role": "user", "content": [{"video": "file:///Users/hupax/skiuo/ai-service/temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_002_20_26.webm"}, {"text": "请分析这段视频内容（时间范围：20.0秒 - 27.0秒）。\n\n这是第一个分析窗口，请完整描述视频内容。\n\n分析要求：\n1. **描述视频中发生的事情**：\n   - 用户在做什么活动？\n   - 屏幕上显示了什么内容？\n   - 有哪些关键操作或变化？\n\n2. **保持连贯性**：\n   - 结合之前的上下文理解当前活动\n   - 只描述这个时间段内新发生的事情\n   - 避免重复之前已经描述过的内容\n\n3. **输出格式**：\n   - 用自然、流畅的中文叙述\n   - 就像在记录一个连续的过程\n   - 不要使用固定的格式或标题\n
-2025-10-24 00:46:59,931 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
-2025-10-24 00:46:59,932 - httpx - DEBUG - load_verify_locations cafile='/Users/hupax/skiuo/ai-service/.venv/lib/python3.12/site-packages/certifi/cacert.pem'
-2025-10-24 00:46:59,939 - httpcore.connection - DEBUG - connect_tcp.started host='dashscope.aliyuncs.com' port=443 local_address=None timeout=120 socket_options=None
-2025-10-24 00:46:59,942 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d364e0>
-2025-10-24 00:46:59,942 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x105d541d0> server_hostname='dashscope.aliyuncs.com' timeout=120
-2025-10-24 00:47:00,189 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d36330>
-2025-10-24 00:47:00,190 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
-2025-10-24 00:47:00,190 - httpcore.http11 - DEBUG - send_request_headers.complete
-2025-10-24 00:47:00,190 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
-2025-10-24 00:47:00,190 - httpcore.http11 - DEBUG - send_request_body.complete
-2025-10-24 00:47:00,191 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
-2025-10-24 00:47:00,952 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'vary', b'Origin,Access-Control-Request-Method,Access-Control-Request-Headers'), (b'x-request-id', b'b656f1fd-f748-4581-9b62-8c1f06337a1e'), (b'content-type', b'text/event-stream;charset=UTF-8'), (b'x-dashscope-call-gateway', b'true'), (b'x-dashscope-timeout', b'298'), (b'x-dashscope-finished', b'false'), (b'req-cost-time', b'564'), (b'req-arrive-time', b'1761238020591'), (b'resp-start-time', b'1761238021155'), (b'x-envoy-upstream-service-time', b'555'), (b'set-cookie', b'acw_tc=b656f1fd-f748-4581-9b62-8c1f06337a1e3bf826470b1c6ba0569625258c247d31;path=/;HttpOnly;Max-Age=1800'), (b'date', b'Thu, 23 Oct 2025 16:47:01 GMT'), (b'server', b'istio-envoy'), (b'transfer-encoding', b'chunked')])
-2025-10-24 00:47:00,953 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
-2025-10-24 00:47:00,953 - app.qwen_client - DEBUG - Response headers: {'vary': 'Origin,Access-Control-Request-Method,Access-Control-Request-Headers', 'x-request-id': 'b656f1fd-f748-4581-9b62-8c1f06337a1e', 'content-type': 'text/event-stream;charset=UTF-8', 'x-dashscope-call-gateway': 'true', 'x-dashscope-timeout': '298', 'x-dashscope-finished': 'false', 'req-cost-time': '564', 'req-arrive-time': '1761238020591', 'resp-start-time': '1761238021155', 'x-envoy-upstream-service-time': '555', 'set-cookie': 'acw_tc=b656f1fd-f748-4581-9b62-8c1f06337a1e3bf826470b1c6ba0569625258c247d31;path=/;HttpOnly;Max-Age=1800', 'date': 'Thu, 23 Oct 2025 16:47:01 GMT', 'server': 'istio-envoy', 'transfer-encoding': 'chunked'}
-2025-10-24 00:47:00,953 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
-2025-10-24 00:47:00,953 - app.qwen_client - DEBUG - [Line 1] id:1
-2025-10-24 00:47:00,954 - app.qwen_client - DEBUG - [Line 2] event:error
-2025-10-24 00:47:00,954 - app.qwen_client - DEBUG - [Line 3] :HTTP_STATUS/400
-2025-10-24 00:47:00,954 - app.qwen_client - DEBUG - [Line 4] data:{"code":"InvalidParameter","message":"<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.","request_id":"b656f1fd-f748-4581-
-2025-10-24 00:47:00,954 - app.qwen_client - DEBUG - Parsed SSE data: {"code": "InvalidParameter", "message": "<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.", "request_id": "b656f1fd-f748-4581-9b62-8c1f06337a1e"}
-2025-10-24 00:47:00,954 - app.qwen_client - DEBUG - [Line 5] 
-2025-10-24 00:47:00,954 - httpcore.http11 - DEBUG - receive_response_body.complete
-2025-10-24 00:47:00,954 - httpcore.http11 - DEBUG - response_closed.started
-2025-10-24 00:47:00,954 - httpcore.http11 - DEBUG - response_closed.complete
-2025-10-24 00:47:00,954 - app.qwen_client - INFO - Total lines received: 5, tokens yielded: 0
-2025-10-24 00:47:00,954 - httpcore.connection - DEBUG - close.started
-2025-10-24 00:47:00,954 - httpcore.connection - DEBUG - close.complete
-2025-10-24 00:47:00,955 - __main__ - INFO - Video analysis completed for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, total tokens: 3
-2025-10-24 00:47:00,956 - app.video_processor - INFO - Cleaned up windows for session: ec47fd1a-ce63-4230-a2e4-ea9e63edf934
-INFO:     127.0.0.1:63591 - "POST /analyze-video HTTP/1.1" 200 OK
+2025-10-24 23:40:53,707 - __main__ - INFO - Received video analysis request for session 287a5f4e-c982-4d29-a2f0-bfb9652d6c52: /tmp/videos/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/video_1761320453611.webm
+2025-10-24 23:40:53,708 - __main__ - INFO - Slicing video into windows...
+2025-10-24 23:40:53,825 - app.video_processor - INFO - Video duration: 29.77 seconds
+2025-10-24 23:40:55,159 - app.video_processor - INFO - Created window 0: 0.00s - 15.00s (15.00s)
+2025-10-24 23:40:56,580 - app.video_processor - INFO - Created window 1: 10.00s - 25.00s (15.00s)
+2025-10-24 23:40:57,597 - app.video_processor - INFO - Created window 2: 20.00s - 29.77s (9.77s)
+2025-10-24 23:40:57,597 - app.video_processor - INFO - Created 3 windows for video (duration: 29.77s)
+2025-10-24 23:40:57,597 - __main__ - INFO - Created 3 windows for analysis
+2025-10-24 23:40:57,597 - __main__ - INFO - Analyzing window 1/3: 0.0s - 15.0s
+2025-10-24 23:40:57,598 - app.grpc_client - INFO - gRPC client connected to localhost:9090
+2025-10-24 23:40:57,727 - __main__ - INFO - Sent window marker for window 1
+2025-10-24 23:40:57,727 - __main__ - INFO - Uploading window 0 to Minio...
+2025-10-24 23:40:57,727 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_000_0_15.mp4 to Minio as videos/b464a9b1_window_000_0_15.mp4...
+2025-10-24 23:41:04,514 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/b464a9b1_window_000_0_15.mp4
+2025-10-24 23:41:04,515 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/b464a9b1_window_000_0_15.mp4
+2025-10-24 23:41:04,515 - app.context_manager - INFO - Created new context for session 287a5f4e-c982-4d29-a2f0-bfb9652d6c52
+2025-10-24 23:41:04,515 - app.qwen_client - INFO - Analyzing video window: 0.0s - 15.0s
+2025-10-24 23:41:10,867 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:41:23,715 - __main__ - INFO - Received video analysis request for session 287a5f4e-c982-4d29-a2f0-bfb9652d6c52: /tmp/videos/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/video_1761320483702.webm
+2025-10-24 23:41:23,716 - __main__ - INFO - Slicing video into windows...
+2025-10-24 23:41:23,824 - app.video_processor - INFO - Video duration: 29.96 seconds
+2025-10-24 23:41:25,010 - app.video_processor - INFO - Created window 0: 0.00s - 15.00s (15.00s)
+2025-10-24 23:41:26,171 - app.video_processor - INFO - Created window 1: 10.00s - 25.00s (15.00s)
+2025-10-24 23:41:27,062 - app.video_processor - INFO - Created window 2: 20.00s - 29.96s (9.96s)
+2025-10-24 23:41:27,063 - app.video_processor - INFO - Created 3 windows for video (duration: 29.96s)
+2025-10-24 23:41:27,063 - __main__ - INFO - Created 3 windows for analysis
+2025-10-24 23:41:27,063 - __main__ - INFO - Analyzing window 1/3: 0.0s - 15.0s
+2025-10-24 23:41:27,082 - __main__ - INFO - Sent window marker for window 1
+2025-10-24 23:41:27,082 - __main__ - INFO - Uploading window 0 to Minio...
+2025-10-24 23:41:27,082 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_000_0_15.mp4 to Minio as videos/1371f67a_window_000_0_15.mp4...
+2025-10-24 23:41:31,684 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/1371f67a_window_000_0_15.mp4
+2025-10-24 23:41:31,684 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/1371f67a_window_000_0_15.mp4
+2025-10-24 23:41:31,685 - app.qwen_client - INFO - Analyzing video window: 0.0s - 15.0s
+2025-10-24 23:41:31,858 - __main__ - INFO - Window 1 analyzed: 554 chars, 290 tokens
+2025-10-24 23:41:31,858 - __main__ - INFO - Analyzing window 2/3: 10.0s - 25.0s
+2025-10-24 23:41:31,862 - __main__ - INFO - Sent window marker for window 2
+2025-10-24 23:41:31,862 - __main__ - INFO - Uploading window 1 to Minio...
+2025-10-24 23:41:31,863 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_001_10_25.mp4 to Minio as videos/19958f66_window_001_10_25.mp4...
+2025-10-24 23:41:35,428 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/19958f66_window_001_10_25.mp4
+2025-10-24 23:41:35,428 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/19958f66_window_001_10_25.mp4
+2025-10-24 23:41:35,428 - app.qwen_client - INFO - Analyzing video window: 10.0s - 25.0s
+2025-10-24 23:41:41,632 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:41:41,635 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:41:47,146 - __main__ - INFO - Window 2 analyzed: 394 chars, 223 tokens
+2025-10-24 23:41:47,146 - __main__ - INFO - Analyzing window 3/3: 20.0s - 29.8s
+2025-10-24 23:41:47,152 - __main__ - INFO - Sent window marker for window 3
+2025-10-24 23:41:47,152 - __main__ - INFO - Uploading window 2 to Minio...
+2025-10-24 23:41:47,152 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_002_20_29.mp4 to Minio as videos/6b422c9d_window_002_20_29.mp4...
+2025-10-24 23:41:48,322 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/6b422c9d_window_002_20_29.mp4
+2025-10-24 23:41:48,322 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/6b422c9d_window_002_20_29.mp4
+2025-10-24 23:41:48,322 - app.qwen_client - INFO - Analyzing video window: 20.0s - 29.8s
+2025-10-24 23:41:49,562 - __main__ - INFO - Window 1 analyzed: 548 chars, 322 tokens
+2025-10-24 23:41:49,562 - __main__ - INFO - Analyzing window 2/3: 10.0s - 25.0s
+2025-10-24 23:41:49,568 - __main__ - INFO - Sent window marker for window 2
+2025-10-24 23:41:49,568 - __main__ - INFO - Uploading window 1 to Minio...
+2025-10-24 23:41:49,568 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_001_10_25.mp4 to Minio as videos/267f3c03_window_001_10_25.mp4...
+2025-10-24 23:41:51,123 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/267f3c03_window_001_10_25.mp4
+2025-10-24 23:41:51,123 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/267f3c03_window_001_10_25.mp4
+2025-10-24 23:41:51,123 - app.qwen_client - INFO - Analyzing video window: 10.0s - 25.0s
+2025-10-24 23:41:53,529 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:41:57,165 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:41:58,352 - __main__ - INFO - Window 3 analyzed: 364 chars, 208 tokens
+2025-10-24 23:41:58,352 - __main__ - INFO - Video analysis completed for session 287a5f4e-c982-4d29-a2f0-bfb9652d6c52, total tokens: 724
+2025-10-24 23:41:58,352 - __main__ - INFO - Cleaning up 3 uploaded files from Minio...
+2025-10-24 23:41:58,352 - app.minio_client - INFO - Deleting Minio object: videos/b464a9b1_window_000_0_15.mp4
+2025-10-24 23:41:58,457 - app.minio_client - INFO - Successfully deleted: videos/b464a9b1_window_000_0_15.mp4
+2025-10-24 23:41:58,457 - app.minio_client - INFO - Deleting Minio object: videos/19958f66_window_001_10_25.mp4
+2025-10-24 23:41:58,567 - app.minio_client - INFO - Successfully deleted: videos/19958f66_window_001_10_25.mp4
+2025-10-24 23:41:58,568 - app.minio_client - INFO - Deleting Minio object: videos/6b422c9d_window_002_20_29.mp4
+2025-10-24 23:41:58,674 - app.minio_client - INFO - Successfully deleted: videos/6b422c9d_window_002_20_29.mp4
+2025-10-24 23:41:58,677 - app.video_processor - INFO - Cleaned up windows for session: 287a5f4e-c982-4d29-a2f0-bfb9652d6c52
+INFO:     127.0.0.1:50881 - "POST /analyze-video HTTP/1.1" 200 OK
+2025-10-24 23:41:58,717 - __main__ - INFO - Received video analysis request for session 287a5f4e-c982-4d29-a2f0-bfb9652d6c52: /tmp/videos/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/video_1761320513782.webm
+2025-10-24 23:41:58,717 - __main__ - INFO - Slicing video into windows...
+2025-10-24 23:41:58,827 - app.video_processor - INFO - Video duration: 29.96 seconds
+2025-10-24 23:42:00,043 - app.video_processor - INFO - Created window 0: 0.00s - 15.00s (15.00s)
+2025-10-24 23:42:01,359 - app.video_processor - INFO - Created window 1: 10.00s - 25.00s (15.00s)
+2025-10-24 23:42:02,306 - app.video_processor - INFO - Created window 2: 20.00s - 29.96s (9.96s)
+2025-10-24 23:42:02,306 - app.video_processor - INFO - Created 3 windows for video (duration: 29.96s)
+2025-10-24 23:42:02,306 - __main__ - INFO - Created 3 windows for analysis
+2025-10-24 23:42:02,306 - __main__ - INFO - Analyzing window 1/3: 0.0s - 15.0s
+2025-10-24 23:42:02,317 - __main__ - INFO - Sent window marker for window 1
+2025-10-24 23:42:02,317 - __main__ - INFO - Uploading window 0 to Minio...
+2025-10-24 23:42:02,317 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_000_0_15.mp4 to Minio as videos/5a57f7e3_window_000_0_15.mp4...
+2025-10-24 23:42:04,047 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/5a57f7e3_window_000_0_15.mp4
+2025-10-24 23:42:04,047 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/5a57f7e3_window_000_0_15.mp4
+2025-10-24 23:42:04,047 - app.qwen_client - INFO - Analyzing video window: 0.0s - 15.0s
+2025-10-24 23:42:07,445 - __main__ - INFO - Window 2 analyzed: 600 chars, 336 tokens
+2025-10-24 23:42:07,446 - __main__ - INFO - Analyzing window 3/3: 20.0s - 30.0s
+2025-10-24 23:42:07,450 - __main__ - INFO - Sent window marker for window 3
+2025-10-24 23:42:07,450 - __main__ - INFO - Uploading window 2 to Minio...
+2025-10-24 23:42:07,450 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_002_20_29.mp4 to Minio as videos/5b3930ac_window_002_20_29.mp4...
+2025-10-24 23:42:08,646 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/5b3930ac_window_002_20_29.mp4
+2025-10-24 23:42:08,646 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/5b3930ac_window_002_20_29.mp4
+2025-10-24 23:42:08,646 - app.qwen_client - INFO - Analyzing video window: 20.0s - 30.0s
+2025-10-24 23:42:10,152 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:42:14,307 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:42:17,328 - __main__ - INFO - Window 1 analyzed: 436 chars, 234 tokens
+2025-10-24 23:42:17,328 - __main__ - INFO - Analyzing window 2/3: 10.0s - 25.0s
+2025-10-24 23:42:17,330 - __main__ - INFO - Sent window marker for window 2
+2025-10-24 23:42:17,330 - __main__ - INFO - Uploading window 1 to Minio...
+2025-10-24 23:42:17,330 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_001_10_25.mp4 to Minio as videos/61dd3994_window_001_10_25.mp4...
+2025-10-24 23:42:24,513 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/61dd3994_window_001_10_25.mp4
+2025-10-24 23:42:24,513 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/61dd3994_window_001_10_25.mp4
+2025-10-24 23:42:24,513 - app.qwen_client - INFO - Analyzing video window: 10.0s - 25.0s
+2025-10-24 23:42:25,243 - __main__ - INFO - Window 3 analyzed: 472 chars, 283 tokens
+2025-10-24 23:42:25,243 - __main__ - INFO - Video analysis completed for session 287a5f4e-c982-4d29-a2f0-bfb9652d6c52, total tokens: 944
+2025-10-24 23:42:25,243 - __main__ - INFO - Cleaning up 3 uploaded files from Minio...
+2025-10-24 23:42:25,243 - app.minio_client - INFO - Deleting Minio object: videos/1371f67a_window_000_0_15.mp4
+2025-10-24 23:42:25,412 - app.minio_client - INFO - Successfully deleted: videos/1371f67a_window_000_0_15.mp4
+2025-10-24 23:42:25,412 - app.minio_client - INFO - Deleting Minio object: videos/267f3c03_window_001_10_25.mp4
+2025-10-24 23:42:25,592 - app.minio_client - INFO - Successfully deleted: videos/267f3c03_window_001_10_25.mp4
+2025-10-24 23:42:25,592 - app.minio_client - INFO - Deleting Minio object: videos/5b3930ac_window_002_20_29.mp4
+2025-10-24 23:42:25,711 - app.minio_client - INFO - Successfully deleted: videos/5b3930ac_window_002_20_29.mp4
+2025-10-24 23:42:25,712 - app.video_processor - INFO - Cleaned up windows for session: 287a5f4e-c982-4d29-a2f0-bfb9652d6c52
+INFO:     127.0.0.1:51136 - "POST /analyze-video HTTP/1.1" 200 OK
+2025-10-24 23:42:25,723 - __main__ - INFO - Received video analysis request for session 287a5f4e-c982-4d29-a2f0-bfb9652d6c52: /tmp/videos/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/video_1761320543870.webm
+2025-10-24 23:42:25,723 - __main__ - INFO - Slicing video into windows...
+2025-10-24 23:42:25,840 - app.video_processor - INFO - Video duration: 29.97 seconds
+2025-10-24 23:42:27,062 - app.video_processor - INFO - Created window 0: 0.00s - 15.00s (15.00s)
+2025-10-24 23:42:28,533 - app.video_processor - INFO - Created window 1: 10.00s - 25.00s (15.00s)
+2025-10-24 23:42:29,433 - app.video_processor - INFO - Created window 2: 20.00s - 29.97s (9.97s)
+2025-10-24 23:42:29,433 - app.video_processor - INFO - Created 3 windows for video (duration: 29.97s)
+2025-10-24 23:42:29,433 - __main__ - INFO - Created 3 windows for analysis
+2025-10-24 23:42:29,433 - __main__ - INFO - Analyzing window 1/3: 0.0s - 15.0s
+2025-10-24 23:42:29,448 - __main__ - INFO - Sent window marker for window 1
+2025-10-24 23:42:29,448 - __main__ - INFO - Uploading window 0 to Minio...
+2025-10-24 23:42:29,448 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_000_0_15.mp4 to Minio as videos/d2f05aed_window_000_0_15.mp4...
+2025-10-24 23:42:31,839 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/d2f05aed_window_000_0_15.mp4
+2025-10-24 23:42:31,839 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/d2f05aed_window_000_0_15.mp4
+2025-10-24 23:42:31,839 - app.qwen_client - INFO - Analyzing video window: 0.0s - 15.0s
+2025-10-24 23:42:31,863 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:42:37,805 - __main__ - INFO - Window 2 analyzed: 525 chars, 292 tokens
+2025-10-24 23:42:37,805 - __main__ - INFO - Analyzing window 3/3: 20.0s - 30.0s
+2025-10-24 23:42:37,814 - __main__ - INFO - Sent window marker for window 3
+2025-10-24 23:42:37,814 - __main__ - INFO - Uploading window 2 to Minio...
+2025-10-24 23:42:37,814 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_002_20_29.mp4 to Minio as videos/bdaee9e8_window_002_20_29.mp4...
+2025-10-24 23:42:43,860 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/bdaee9e8_window_002_20_29.mp4
+2025-10-24 23:42:43,860 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/bdaee9e8_window_002_20_29.mp4
+2025-10-24 23:42:43,860 - app.qwen_client - INFO - Analyzing video window: 20.0s - 30.0s
+2025-10-24 23:42:43,880 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:42:48,042 - __main__ - INFO - Window 1 analyzed: 439 chars, 246 tokens
+2025-10-24 23:42:48,042 - __main__ - INFO - Analyzing window 2/3: 10.0s - 25.0s
+2025-10-24 23:42:48,047 - __main__ - INFO - Sent window marker for window 2
+2025-10-24 23:42:48,047 - __main__ - INFO - Uploading window 1 to Minio...
+2025-10-24 23:42:48,047 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_001_10_25.mp4 to Minio as videos/df434cb8_window_001_10_25.mp4...
+2025-10-24 23:42:50,415 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/df434cb8_window_001_10_25.mp4
+2025-10-24 23:42:50,415 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/df434cb8_window_001_10_25.mp4
+2025-10-24 23:42:50,415 - app.qwen_client - INFO - Analyzing video window: 10.0s - 25.0s
+2025-10-24 23:42:50,434 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:42:56,716 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:43:05,476 - __main__ - INFO - Window 2 analyzed: 595 chars, 355 tokens
+2025-10-24 23:43:05,476 - __main__ - INFO - Analyzing window 3/3: 20.0s - 30.0s
+2025-10-24 23:43:05,478 - __main__ - INFO - Sent window marker for window 3
+2025-10-24 23:43:05,478 - __main__ - INFO - Uploading window 2 to Minio...
+2025-10-24 23:43:05,478 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_002_20_29.mp4 to Minio as videos/a7f4af34_window_002_20_29.mp4...
+2025-10-24 23:43:09,441 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/a7f4af34_window_002_20_29.mp4
+2025-10-24 23:43:09,441 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/a7f4af34_window_002_20_29.mp4
+2025-10-24 23:43:09,441 - app.qwen_client - INFO - Analyzing video window: 20.0s - 30.0s
+2025-10-24 23:43:09,531 - __main__ - INFO - Window 3 analyzed: 493 chars, 321 tokens
+2025-10-24 23:43:09,531 - __main__ - INFO - Video analysis completed for session 287a5f4e-c982-4d29-a2f0-bfb9652d6c52, total tokens: 850
+2025-10-24 23:43:09,531 - __main__ - INFO - Cleaning up 3 uploaded files from Minio...
+2025-10-24 23:43:09,531 - app.minio_client - INFO - Deleting Minio object: videos/5a57f7e3_window_000_0_15.mp4
+2025-10-24 23:43:09,650 - app.minio_client - INFO - Successfully deleted: videos/5a57f7e3_window_000_0_15.mp4
+2025-10-24 23:43:09,650 - app.minio_client - INFO - Deleting Minio object: videos/61dd3994_window_001_10_25.mp4
+2025-10-24 23:43:09,788 - app.minio_client - INFO - Successfully deleted: videos/61dd3994_window_001_10_25.mp4
+2025-10-24 23:43:09,789 - app.minio_client - INFO - Deleting Minio object: videos/bdaee9e8_window_002_20_29.mp4
+2025-10-24 23:43:09,921 - app.minio_client - INFO - Successfully deleted: videos/bdaee9e8_window_002_20_29.mp4
+2025-10-24 23:43:09,923 - app.video_processor - INFO - Cleaned up windows for session: 287a5f4e-c982-4d29-a2f0-bfb9652d6c52
+2025-10-24 23:43:09,930 - __main__ - INFO - Received video analysis request for session 287a5f4e-c982-4d29-a2f0-bfb9652d6c52: /tmp/videos/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/video_1761320573959.webm
+2025-10-24 23:43:09,931 - __main__ - INFO - Slicing video into windows...
+INFO:     127.0.0.1:51454 - "POST /analyze-video HTTP/1.1" 200 OK
+2025-10-24 23:43:10,077 - app.video_processor - INFO - Video duration: 29.95 seconds
+2025-10-24 23:43:11,005 - app.video_processor - INFO - Created window 0: 0.00s - 15.00s (15.00s)
+2025-10-24 23:43:11,890 - app.video_processor - INFO - Created window 1: 10.00s - 25.00s (15.00s)
+2025-10-24 23:43:12,578 - app.video_processor - INFO - Created window 2: 20.00s - 29.95s (9.95s)
+2025-10-24 23:43:12,578 - app.video_processor - INFO - Created 3 windows for video (duration: 29.95s)
+2025-10-24 23:43:12,578 - __main__ - INFO - Created 3 windows for analysis
+2025-10-24 23:43:12,578 - __main__ - INFO - Analyzing window 1/3: 0.0s - 15.0s
+2025-10-24 23:43:12,587 - __main__ - INFO - Sent window marker for window 1
+2025-10-24 23:43:12,587 - __main__ - INFO - Uploading window 0 to Minio...
+2025-10-24 23:43:12,587 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_000_0_15.mp4 to Minio as videos/2fbf561c_window_000_0_15.mp4...
+2025-10-24 23:43:14,345 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/2fbf561c_window_000_0_15.mp4
+2025-10-24 23:43:14,345 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/2fbf561c_window_000_0_15.mp4
+2025-10-24 23:43:14,346 - app.qwen_client - INFO - Analyzing video window: 0.0s - 15.0s
+2025-10-24 23:43:14,680 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:43:20,072 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:43:20,896 - __main__ - INFO - Window 3 analyzed: 448 chars, 253 tokens
+2025-10-24 23:43:20,896 - __main__ - INFO - Video analysis completed for session 287a5f4e-c982-4d29-a2f0-bfb9652d6c52, total tokens: 857
+2025-10-24 23:43:20,896 - __main__ - INFO - Cleaning up 3 uploaded files from Minio...
+2025-10-24 23:43:20,896 - app.minio_client - INFO - Deleting Minio object: videos/d2f05aed_window_000_0_15.mp4
+2025-10-24 23:43:21,006 - app.minio_client - INFO - Successfully deleted: videos/d2f05aed_window_000_0_15.mp4
+2025-10-24 23:43:21,006 - app.minio_client - INFO - Deleting Minio object: videos/df434cb8_window_001_10_25.mp4
+2025-10-24 23:43:21,119 - app.minio_client - INFO - Successfully deleted: videos/df434cb8_window_001_10_25.mp4
+2025-10-24 23:43:21,119 - app.minio_client - INFO - Deleting Minio object: videos/a7f4af34_window_002_20_29.mp4
+2025-10-24 23:43:21,213 - app.minio_client - INFO - Successfully deleted: videos/a7f4af34_window_002_20_29.mp4
+2025-10-24 23:43:21,215 - app.video_processor - INFO - Cleaned up windows for session: 287a5f4e-c982-4d29-a2f0-bfb9652d6c52
+INFO:     127.0.0.1:51136 - "POST /analyze-video HTTP/1.1" 200 OK
+2025-10-24 23:43:24,302 - __main__ - INFO - Received video analysis request for session 287a5f4e-c982-4d29-a2f0-bfb9652d6c52: /tmp/videos/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/video_1761320604287.webm
+2025-10-24 23:43:24,302 - __main__ - INFO - Slicing video into windows...
+2025-10-24 23:43:24,361 - app.video_processor - INFO - Video duration: 30.13 seconds
+2025-10-24 23:43:25,280 - app.video_processor - INFO - Created window 0: 0.00s - 15.00s (15.00s)
+2025-10-24 23:43:26,221 - app.video_processor - INFO - Created window 1: 10.00s - 25.00s (15.00s)
+2025-10-24 23:43:27,013 - app.video_processor - INFO - Created window 2: 20.00s - 30.13s (10.13s)
+2025-10-24 23:43:27,013 - app.video_processor - INFO - Remaining duration 0.13s too short, skipping
+2025-10-24 23:43:27,013 - app.video_processor - INFO - Created 3 windows for video (duration: 30.13s)
+2025-10-24 23:43:27,013 - __main__ - INFO - Created 3 windows for analysis
+2025-10-24 23:43:27,013 - __main__ - INFO - Analyzing window 1/3: 0.0s - 15.0s
+2025-10-24 23:43:27,028 - __main__ - INFO - Sent window marker for window 1
+2025-10-24 23:43:27,028 - __main__ - INFO - Uploading window 0 to Minio...
+2025-10-24 23:43:27,028 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_000_0_15.mp4 to Minio as videos/8997a510_window_000_0_15.mp4...
+2025-10-24 23:43:28,641 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/8997a510_window_000_0_15.mp4
+2025-10-24 23:43:28,641 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/8997a510_window_000_0_15.mp4
+2025-10-24 23:43:28,641 - app.qwen_client - INFO - Analyzing video window: 0.0s - 15.0s
+2025-10-24 23:43:28,828 - __main__ - INFO - Window 1 analyzed: 332 chars, 231 tokens
+2025-10-24 23:43:28,828 - __main__ - INFO - Analyzing window 2/3: 10.0s - 25.0s
+2025-10-24 23:43:28,830 - __main__ - INFO - Sent window marker for window 2
+2025-10-24 23:43:28,830 - __main__ - INFO - Uploading window 1 to Minio...
+2025-10-24 23:43:28,830 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_001_10_25.mp4 to Minio as videos/5dab653d_window_001_10_25.mp4...
+2025-10-24 23:43:30,544 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/5dab653d_window_001_10_25.mp4
+2025-10-24 23:43:30,545 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/5dab653d_window_001_10_25.mp4
+2025-10-24 23:43:30,545 - app.qwen_client - INFO - Analyzing video window: 10.0s - 25.0s
+2025-10-24 23:43:35,959 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:43:37,941 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:43:40,291 - __main__ - INFO - Window 1 analyzed: 231 chars, 170 tokens
+2025-10-24 23:43:40,291 - __main__ - INFO - Analyzing window 2/3: 10.0s - 25.0s
+2025-10-24 23:43:40,294 - __main__ - INFO - Sent window marker for window 2
+2025-10-24 23:43:40,294 - __main__ - INFO - Uploading window 1 to Minio...
+2025-10-24 23:43:40,294 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_001_10_25.mp4 to Minio as videos/030f7840_window_001_10_25.mp4...
+2025-10-24 23:43:41,414 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/030f7840_window_001_10_25.mp4
+2025-10-24 23:43:41,414 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/030f7840_window_001_10_25.mp4
+2025-10-24 23:43:41,414 - app.qwen_client - INFO - Analyzing video window: 10.0s - 25.0s
+2025-10-24 23:43:47,185 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:43:50,450 - __main__ - INFO - Window 2 analyzed: 535 chars, 356 tokens
+2025-10-24 23:43:50,451 - __main__ - INFO - Analyzing window 3/3: 20.0s - 29.9s
+2025-10-24 23:43:50,456 - __main__ - INFO - Sent window marker for window 3
+2025-10-24 23:43:50,456 - __main__ - INFO - Uploading window 2 to Minio...
+2025-10-24 23:43:50,456 - __main__ - ERROR - Failed to upload window 2 to Minio: Video file not found: temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_002_20_29.mp4
+2025-10-24 23:43:50,461 - __main__ - INFO - Video analysis completed for session 287a5f4e-c982-4d29-a2f0-bfb9652d6c52, total tokens: 591
+2025-10-24 23:43:50,461 - __main__ - INFO - Cleaning up 2 uploaded files from Minio...
+2025-10-24 23:43:50,461 - app.minio_client - INFO - Deleting Minio object: videos/2fbf561c_window_000_0_15.mp4
+2025-10-24 23:43:50,602 - app.minio_client - INFO - Successfully deleted: videos/2fbf561c_window_000_0_15.mp4
+2025-10-24 23:43:50,602 - app.minio_client - INFO - Deleting Minio object: videos/5dab653d_window_001_10_25.mp4
+2025-10-24 23:43:50,714 - app.minio_client - INFO - Successfully deleted: videos/5dab653d_window_001_10_25.mp4
+2025-10-24 23:43:50,714 - app.video_processor - INFO - Cleaned up windows for session: 287a5f4e-c982-4d29-a2f0-bfb9652d6c52
+INFO:     127.0.0.1:51454 - "POST /analyze-video HTTP/1.1" 200 OK
+2025-10-24 23:43:50,726 - __main__ - INFO - Received video analysis request for session 287a5f4e-c982-4d29-a2f0-bfb9652d6c52: /tmp/videos/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/video_1761320609999.webm
+2025-10-24 23:43:50,726 - __main__ - INFO - Slicing video into windows...
+2025-10-24 23:43:50,836 - app.video_processor - INFO - Video duration: 5.60 seconds
+2025-10-24 23:43:51,295 - app.video_processor - INFO - Created window 0: 0.00s - 5.60s (5.60s)
+2025-10-24 23:43:51,295 - app.video_processor - INFO - Created 1 windows for video (duration: 5.60s)
+2025-10-24 23:43:51,295 - __main__ - INFO - Created 1 windows for analysis
+2025-10-24 23:43:51,295 - __main__ - INFO - Analyzing window 1/1: 0.0s - 5.6s
+2025-10-24 23:43:51,306 - __main__ - INFO - Sent window marker for window 1
+2025-10-24 23:43:51,306 - __main__ - INFO - Uploading window 0 to Minio...
+2025-10-24 23:43:51,306 - app.minio_client - INFO - Uploading temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_000_0_5.mp4 to Minio as videos/6d057b11_window_000_0_5.mp4...
+2025-10-24 23:43:52,393 - app.minio_client - INFO - Video uploaded successfully: https://minio-api.supanx.net/test/videos/6d057b11_window_000_0_5.mp4
+2025-10-24 23:43:52,393 - __main__ - INFO - Window uploaded: https://minio-api.supanx.net/test/videos/6d057b11_window_000_0_5.mp4
+2025-10-24 23:43:52,393 - app.qwen_client - INFO - Analyzing video window: 0.0s - 5.6s
+2025-10-24 23:43:53,915 - __main__ - INFO - Window 2 analyzed: 400 chars, 254 tokens
+2025-10-24 23:43:53,916 - __main__ - INFO - Analyzing window 3/3: 20.0s - 30.1s
+2025-10-24 23:43:53,926 - __main__ - INFO - Sent window marker for window 3
+2025-10-24 23:43:53,926 - __main__ - INFO - Uploading window 2 to Minio...
+2025-10-24 23:43:53,926 - __main__ - ERROR - Failed to upload window 2 to Minio: Video file not found: temp_windows/287a5f4e-c982-4d29-a2f0-bfb9652d6c52/window_002_20_30.mp4
+2025-10-24 23:43:53,931 - __main__ - INFO - Video analysis completed for session 287a5f4e-c982-4d29-a2f0-bfb9652d6c52, total tokens: 428
+2025-10-24 23:43:53,931 - __main__ - INFO - Cleaning up 2 uploaded files from Minio...
+2025-10-24 23:43:53,931 - app.minio_client - INFO - Deleting Minio object: videos/8997a510_window_000_0_15.mp4
+2025-10-24 23:43:54,065 - app.minio_client - INFO - Successfully deleted: videos/8997a510_window_000_0_15.mp4
+2025-10-24 23:43:54,065 - app.minio_client - INFO - Deleting Minio object: videos/030f7840_window_001_10_25.mp4
+INFO:     127.0.0.1:51136 - "POST /analyze-video HTTP/1.1" 200 OK
+2025-10-24 23:43:54,205 - app.minio_client - INFO - Successfully deleted: videos/030f7840_window_001_10_25.mp4
+2025-10-24 23:43:54,207 - app.video_processor - INFO - Cleaned up windows for session: 287a5f4e-c982-4d29-a2f0-bfb9652d6c52
+2025-10-24 23:43:56,579 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 23:44:02,514 - __main__ - INFO - Window 1 analyzed: 393 chars, 260 tokens
+2025-10-24 23:44:02,514 - __main__ - INFO - Video analysis completed for session 287a5f4e-c982-4d29-a2f0-bfb9652d6c52, total tokens: 261
+2025-10-24 23:44:02,514 - __main__ - INFO - Cleaning up 1 uploaded files from Minio...
+2025-10-24 23:44:02,514 - app.minio_client - INFO - Deleting Minio object: videos/6d057b11_window_000_0_5.mp4
+INFO:     127.0.0.1:51454 - "POST /analyze-video HTTP/1.1" 200 OK
+2025-10-24 23:44:02,627 - app.minio_client - INFO - Successfully deleted: videos/6d057b11_window_000_0_5.mp4

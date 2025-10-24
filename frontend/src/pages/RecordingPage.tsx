@@ -104,19 +104,24 @@ const RecordingPage: React.FC = () => {
         setLocalStream(null);
       }
 
-      // 3. Close WebSocket
-      if (wsClient.current) {
-        wsClient.current.close();
-        wsClient.current = null;
-      }
-
-      // 4. Stop session via API
+      // 3. Stop session via API (but keep WebSocket open for remaining analysis)
       if (session) {
         await sessionAPI.stop(session.id);
         console.log('Recording stopped:', session.id);
+        console.log('WebSocket remains open to receive remaining analysis results...');
       }
 
       setIsRecording(false);
+
+      // 4. Delay closing WebSocket to allow remaining tasks to complete
+      // WebSocket will be closed when user navigates away or after a timeout
+      setTimeout(() => {
+        if (wsClient.current) {
+          console.log('Closing WebSocket after timeout');
+          wsClient.current.close();
+          wsClient.current = null;
+        }
+      }, 60000); // Keep open for 1 minute to receive remaining analysis
 
     } catch (err: any) {
       console.error('Failed to stop recording:', err);

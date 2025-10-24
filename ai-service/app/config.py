@@ -33,7 +33,9 @@ class Settings(BaseSettings):
     minio_public_url: str = os.getenv("MINIO_PUBLIC_URL", "https://minio-api.supanx.net/test/")
 
     class Config:
-        env_file = "..env"
+        env_file = "../.env"  # 指向项目根目录的 .env 文件
+        env_file_encoding = 'utf-8'
+        extra = 'ignore'  # 忽略 .env 中其他服务的环境变量
         protected_namespaces = ('settings_',)  # 修改保护的命名空间
 
 settings = Settings()

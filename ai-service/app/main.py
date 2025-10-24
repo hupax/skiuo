@@ -7,6 +7,14 @@ import asyncio
 import base64
 from pathlib import Path
 from typing import Optional
+import os
+
+# Load .env file explicitly (before importing settings)
+from dotenv import load_dotenv
+env_path = Path(__file__).parent.parent.parent / ".env"
+load_dotenv(dotenv_path=env_path)
+logger_init = logging.getLogger(__name__)
+logger_init.info(f"Loading environment from: {env_path}")
 
 from app.config import settings
 from app.qwen_client import QwenVisionClient
@@ -239,6 +247,7 @@ async def analyze_video(request: VideoAnalysisRequest):
                 timestamp=timestamp
             )
             token_index += 1
+            logger.info(f"Sent window marker for window {window.window_index + 1}")
 
             # 上传窗口视频到Minio
             video_url = None
@@ -265,6 +274,7 @@ async def analyze_video(request: VideoAnalysisRequest):
 
             # AI 分析窗口视频（使用Minio公网URL）
             accumulated_response = ""
+            token_count = 0
             try:
                 async for token in qwen_client.analyze_video_streaming(
                     video_path=video_url,
@@ -274,6 +284,7 @@ async def analyze_video(request: VideoAnalysisRequest):
                     previous_summary=previous_summary
                 ):
                     accumulated_response += token
+                    token_count += 1
 
                     # 发送 token 到 Spring Boot
                     timestamp = int(asyncio.get_event_loop().time() * 1000)
@@ -289,12 +300,24 @@ async def analyze_video(request: VideoAnalysisRequest):
                     else:
                         logger.error(f"Failed to save token {token_index}")
 
-                # 更新上下文和摘要
-                if accumulated_response:
+                # 检查是否有分析结果
+                if accumulated_response.strip():
                     # 保存完整的分析结果作为上下文
                     context_manager.add_to_context(session_id, accumulated_response[:500], role="assistant")
                     previous_summary = accumulated_response[:200]  # 保留前200字符作为摘要
-                    logger.info(f"Window {window.window_index} analyzed: {len(accumulated_response)} chars")
+                    logger.info(f"Window {window.window_index + 1} analyzed: {len(accumulated_response)} chars, {token_count} tokens")
+                else:
+                    # 如果没有返回内容，记录警告并发送提示
+                    logger.warning(f"Window {window.window_index + 1} returned empty response")
+                    empty_msg = f"[警告] 此窗口分析未返回内容\n"
+                    timestamp = int(asyncio.get_event_loop().time() * 1000)
+                    await grpc_client.save_analysis(
+                        session_id=session_id,
+                        content=empty_msg,
+                        token_index=token_index,
+                        timestamp=timestamp
+                    )
+                    token_index += 1
 
             except Exception as e:
                 logger.error(f"Error analyzing window {window.window_index}: {e}", exc_info=True)
