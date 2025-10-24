@@ -1,0 +1,222 @@
+
+2025-10-24 00:45:41,733 - __main__ - INFO - StreamMind AI Service starting up...
+2025-10-24 00:45:41,733 - __main__ - INFO - Qwen API configured: True
+2025-10-24 00:45:41,733 - __main__ - INFO - Spring Boot gRPC: localhost:9090
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2025-10-24 00:46:28,958 - __main__ - INFO - Received video analysis request for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934: /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761237988821.webm
+2025-10-24 00:46:28,959 - __main__ - INFO - Slicing video with sliding window...
+2025-10-24 00:46:29,126 - app.video_processor - INFO - Video duration: 28.36 seconds
+2025-10-24 00:46:29,164 - app.video_processor - DEBUG - FFmpeg command: ffmpeg -i /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761237988821.webm -ss 0.0 -t 15.0 -c copy -y temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_000_0_15.webm
+2025-10-24 00:46:29,164 - app.video_processor - INFO - Created window 0: 0.00s - 15.00s (15.00s)
+2025-10-24 00:46:29,203 - app.video_processor - DEBUG - FFmpeg command: ffmpeg -i /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761237988821.webm -ss 10.0 -t 15.0 -c copy -y temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_001_10_25.webm
+2025-10-24 00:46:29,204 - app.video_processor - INFO - Created window 1: 10.00s - 25.00s (15.00s)
+2025-10-24 00:46:29,241 - app.video_processor - DEBUG - FFmpeg command: ffmpeg -i /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761237988821.webm -ss 20.0 -t 8.359532999999999 -c copy -y temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_002_20_28.webm
+2025-10-24 00:46:29,241 - app.video_processor - INFO - Created window 2: 20.00s - 28.36s (8.36s)
+2025-10-24 00:46:29,241 - app.video_processor - INFO - Created 3 windows for video (duration: 28.36s)
+2025-10-24 00:46:29,241 - __main__ - INFO - Created 3 windows for analysis
+2025-10-24 00:46:29,241 - __main__ - INFO - Analyzing window 0/3: 0.0s - 15.0s
+2025-10-24 00:46:29,241 - grpc._cython.cygrpc - DEBUG - Using AsyncIOEngine.POLLER as I/O engine
+2025-10-24 00:46:29,243 - app.grpc_client - INFO - gRPC client connected to localhost:9090
+2025-10-24 00:46:29,345 - app.grpc_client - DEBUG - Saved token 0 for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, ID: 8729
+2025-10-24 00:46:29,346 - app.qwen_client - INFO - Analyzing video window: 0.0s - 15.0s
+2025-10-24 00:46:29,346 - app.qwen_client - DEBUG - Request payload: {"model": "qwen-vl-max", "input": {"messages": [{"role": "user", "content": [{"video": "file:///Users/hupax/skiuo/ai-service/temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_000_0_15.webm"}, {"text": "请分析这段视频内容（时间范围：0.0秒 - 15.0秒）。\n\n这是第一个分析窗口，请完整描述视频内容。\n\n分析要求：\n1. **描述视频中发生的事情**：\n   - 用户在做什么活动？\n   - 屏幕上显示了什么内容？\n   - 有哪些关键操作或变化？\n\n2. **保持连贯性**：\n   - 结合之前的上下文理解当前活动\n   - 只描述这个时间段内新发生的事情\n   - 避免重复之前已经描述过的内容\n\n3. **输出格式**：\n   - 用自然、流畅的中文叙述\n   - 就像在记录一个连续的过程\n   - 不要使用固定的格式或标题\n\n
+2025-10-24 00:46:29,350 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-10-24 00:46:29,353 - httpx - DEBUG - load_verify_locations cafile='/Users/hupax/skiuo/ai-service/.venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2025-10-24 00:46:29,374 - httpcore.connection - DEBUG - connect_tcp.started host='dashscope.aliyuncs.com' port=443 local_address=None timeout=120 socket_options=None
+2025-10-24 00:46:29,377 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x104edf020>
+2025-10-24 00:46:29,377 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x105ba9350> server_hostname='dashscope.aliyuncs.com' timeout=120
+2025-10-24 00:46:29,690 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x102fed070>
+2025-10-24 00:46:29,690 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-10-24 00:46:29,691 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-10-24 00:46:29,691 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-10-24 00:46:29,691 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-10-24 00:46:29,691 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-10-24 00:46:30,319 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'vary', b'Origin,Access-Control-Request-Method,Access-Control-Request-Headers'), (b'x-request-id', b'44f96dca-6a52-4ff4-af4a-b0730256f140'), (b'content-type', b'text/event-stream;charset=UTF-8'), (b'x-dashscope-call-gateway', b'true'), (b'x-dashscope-timeout', b'298'), (b'x-dashscope-finished', b'false'), (b'req-cost-time', b'519'), (b'req-arrive-time', b'1761237990122'), (b'resp-start-time', b'1761237990641'), (b'x-envoy-upstream-service-time', b'510'), (b'set-cookie', b'acw_tc=44f96dca-6a52-4ff4-af4a-b0730256f140b046f2af2e92c99c2035b068a79ee8b1;path=/;HttpOnly;Max-Age=1800'), (b'date', b'Thu, 23 Oct 2025 16:46:30 GMT'), (b'server', b'istio-envoy'), (b'transfer-encoding', b'chunked')])
+2025-10-24 00:46:30,320 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 00:46:30,320 - app.qwen_client - DEBUG - Response headers: {'vary': 'Origin,Access-Control-Request-Method,Access-Control-Request-Headers', 'x-request-id': '44f96dca-6a52-4ff4-af4a-b0730256f140', 'content-type': 'text/event-stream;charset=UTF-8', 'x-dashscope-call-gateway': 'true', 'x-dashscope-timeout': '298', 'x-dashscope-finished': 'false', 'req-cost-time': '519', 'req-arrive-time': '1761237990122', 'resp-start-time': '1761237990641', 'x-envoy-upstream-service-time': '510', 'set-cookie': 'acw_tc=44f96dca-6a52-4ff4-af4a-b0730256f140b046f2af2e92c99c2035b068a79ee8b1;path=/;HttpOnly;Max-Age=1800', 'date': 'Thu, 23 Oct 2025 16:46:30 GMT', 'server': 'istio-envoy', 'transfer-encoding': 'chunked'}
+2025-10-24 00:46:30,320 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-10-24 00:46:30,320 - app.qwen_client - DEBUG - [Line 1] id:1
+2025-10-24 00:46:30,320 - app.qwen_client - DEBUG - [Line 2] event:error
+2025-10-24 00:46:30,320 - app.qwen_client - DEBUG - [Line 3] :HTTP_STATUS/400
+2025-10-24 00:46:30,320 - app.qwen_client - DEBUG - [Line 4] data:{"code":"InvalidParameter","message":"<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.","request_id":"44f96dca-6a52-4ff4-
+2025-10-24 00:46:30,320 - app.qwen_client - DEBUG - Parsed SSE data: {"code": "InvalidParameter", "message": "<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.", "request_id": "44f96dca-6a52-4ff4-af4a-b0730256f140"}
+2025-10-24 00:46:30,320 - app.qwen_client - DEBUG - [Line 5] 
+2025-10-24 00:46:30,321 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-10-24 00:46:30,322 - httpcore.http11 - DEBUG - response_closed.started
+2025-10-24 00:46:30,322 - httpcore.http11 - DEBUG - response_closed.complete
+2025-10-24 00:46:30,323 - app.qwen_client - INFO - Total lines received: 5, tokens yielded: 0
+2025-10-24 00:46:30,323 - httpcore.connection - DEBUG - close.started
+2025-10-24 00:46:30,323 - httpcore.connection - DEBUG - close.complete
+2025-10-24 00:46:30,323 - __main__ - INFO - Analyzing window 1/3: 10.0s - 25.0s
+2025-10-24 00:46:30,335 - app.grpc_client - DEBUG - Saved token 1 for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, ID: 8730
+2025-10-24 00:46:30,335 - app.qwen_client - INFO - Analyzing video window: 10.0s - 25.0s
+2025-10-24 00:46:30,335 - app.qwen_client - DEBUG - Request payload: {"model": "qwen-vl-max", "input": {"messages": [{"role": "user", "content": [{"video": "file:///Users/hupax/skiuo/ai-service/temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_001_10_25.webm"}, {"text": "请分析这段视频内容（时间范围：10.0秒 - 25.0秒）。\n\n这是第一个分析窗口，请完整描述视频内容。\n\n分析要求：\n1. **描述视频中发生的事情**：\n   - 用户在做什么活动？\n   - 屏幕上显示了什么内容？\n   - 有哪些关键操作或变化？\n\n2. **保持连贯性**：\n   - 结合之前的上下文理解当前活动\n   - 只描述这个时间段内新发生的事情\n   - 避免重复之前已经描述过的内容\n\n3. **输出格式**：\n   - 用自然、流畅的中文叙述\n   - 就像在记录一个连续的过程\n   - 不要使用固定的格式或标题\n
+2025-10-24 00:46:30,336 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-10-24 00:46:30,336 - httpx - DEBUG - load_verify_locations cafile='/Users/hupax/skiuo/ai-service/.venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2025-10-24 00:46:30,345 - httpcore.connection - DEBUG - connect_tcp.started host='dashscope.aliyuncs.com' port=443 local_address=None timeout=120 socket_options=None
+2025-10-24 00:46:30,349 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d360c0>
+2025-10-24 00:46:30,349 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x105bab9d0> server_hostname='dashscope.aliyuncs.com' timeout=120
+2025-10-24 00:46:30,558 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d36120>
+2025-10-24 00:46:30,558 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-10-24 00:46:30,558 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-10-24 00:46:30,558 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-10-24 00:46:30,558 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-10-24 00:46:30,558 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-10-24 00:46:30,966 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'vary', b'Origin,Access-Control-Request-Method,Access-Control-Request-Headers'), (b'x-request-id', b'b638e424-d0ca-4fa3-816a-dda19de5674a'), (b'content-type', b'text/event-stream;charset=UTF-8'), (b'x-dashscope-call-gateway', b'true'), (b'x-dashscope-timeout', b'298'), (b'x-dashscope-finished', b'false'), (b'req-cost-time', b'303'), (b'req-arrive-time', b'1761237990982'), (b'resp-start-time', b'1761237991286'), (b'x-envoy-upstream-service-time', b'295'), (b'set-cookie', b'acw_tc=b638e424-d0ca-4fa3-816a-dda19de5674a26d700e75aa86018bddcc0f687702d5a;path=/;HttpOnly;Max-Age=1800'), (b'date', b'Thu, 23 Oct 2025 16:46:30 GMT'), (b'server', b'istio-envoy'), (b'transfer-encoding', b'chunked')])
+2025-10-24 00:46:30,967 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 00:46:30,967 - app.qwen_client - DEBUG - Response headers: {'vary': 'Origin,Access-Control-Request-Method,Access-Control-Request-Headers', 'x-request-id': 'b638e424-d0ca-4fa3-816a-dda19de5674a', 'content-type': 'text/event-stream;charset=UTF-8', 'x-dashscope-call-gateway': 'true', 'x-dashscope-timeout': '298', 'x-dashscope-finished': 'false', 'req-cost-time': '303', 'req-arrive-time': '1761237990982', 'resp-start-time': '1761237991286', 'x-envoy-upstream-service-time': '295', 'set-cookie': 'acw_tc=b638e424-d0ca-4fa3-816a-dda19de5674a26d700e75aa86018bddcc0f687702d5a;path=/;HttpOnly;Max-Age=1800', 'date': 'Thu, 23 Oct 2025 16:46:30 GMT', 'server': 'istio-envoy', 'transfer-encoding': 'chunked'}
+2025-10-24 00:46:30,967 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-10-24 00:46:30,967 - app.qwen_client - DEBUG - [Line 1] id:1
+2025-10-24 00:46:30,967 - app.qwen_client - DEBUG - [Line 2] event:error
+2025-10-24 00:46:30,967 - app.qwen_client - DEBUG - [Line 3] :HTTP_STATUS/400
+2025-10-24 00:46:30,967 - app.qwen_client - DEBUG - [Line 4] data:{"code":"InvalidParameter","message":"<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.","request_id":"b638e424-d0ca-4fa3-
+2025-10-24 00:46:30,967 - app.qwen_client - DEBUG - Parsed SSE data: {"code": "InvalidParameter", "message": "<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.", "request_id": "b638e424-d0ca-4fa3-816a-dda19de5674a"}
+2025-10-24 00:46:30,968 - app.qwen_client - DEBUG - [Line 5] 
+2025-10-24 00:46:30,968 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-10-24 00:46:30,968 - httpcore.http11 - DEBUG - response_closed.started
+2025-10-24 00:46:30,968 - httpcore.http11 - DEBUG - response_closed.complete
+2025-10-24 00:46:30,968 - app.qwen_client - INFO - Total lines received: 5, tokens yielded: 0
+2025-10-24 00:46:30,968 - httpcore.connection - DEBUG - close.started
+2025-10-24 00:46:30,969 - httpcore.connection - DEBUG - close.complete
+2025-10-24 00:46:30,969 - __main__ - INFO - Analyzing window 2/3: 20.0s - 28.4s
+2025-10-24 00:46:30,997 - app.grpc_client - DEBUG - Saved token 2 for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, ID: 8731
+2025-10-24 00:46:30,997 - app.qwen_client - INFO - Analyzing video window: 20.0s - 28.4s
+2025-10-24 00:46:30,997 - app.qwen_client - DEBUG - Request payload: {"model": "qwen-vl-max", "input": {"messages": [{"role": "user", "content": [{"video": "file:///Users/hupax/skiuo/ai-service/temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_002_20_28.webm"}, {"text": "请分析这段视频内容（时间范围：20.0秒 - 28.4秒）。\n\n这是第一个分析窗口，请完整描述视频内容。\n\n分析要求：\n1. **描述视频中发生的事情**：\n   - 用户在做什么活动？\n   - 屏幕上显示了什么内容？\n   - 有哪些关键操作或变化？\n\n2. **保持连贯性**：\n   - 结合之前的上下文理解当前活动\n   - 只描述这个时间段内新发生的事情\n   - 避免重复之前已经描述过的内容\n\n3. **输出格式**：\n   - 用自然、流畅的中文叙述\n   - 就像在记录一个连续的过程\n   - 不要使用固定的格式或标题\n
+2025-10-24 00:46:30,998 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-10-24 00:46:30,998 - httpx - DEBUG - load_verify_locations cafile='/Users/hupax/skiuo/ai-service/.venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2025-10-24 00:46:31,007 - httpcore.connection - DEBUG - connect_tcp.started host='dashscope.aliyuncs.com' port=443 local_address=None timeout=120 socket_options=None
+2025-10-24 00:46:31,010 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d37950>
+2025-10-24 00:46:31,010 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x105d54cd0> server_hostname='dashscope.aliyuncs.com' timeout=120
+2025-10-24 00:46:31,234 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d37890>
+2025-10-24 00:46:31,234 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-10-24 00:46:31,235 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-10-24 00:46:31,235 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-10-24 00:46:31,235 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-10-24 00:46:31,235 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-10-24 00:46:31,733 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'vary', b'Origin,Access-Control-Request-Method,Access-Control-Request-Headers'), (b'x-request-id', b'd25a5642-c9b1-4ca6-ad02-2df975132d1f'), (b'content-type', b'text/event-stream;charset=UTF-8'), (b'x-dashscope-call-gateway', b'true'), (b'x-dashscope-timeout', b'298'), (b'x-dashscope-finished', b'false'), (b'req-cost-time', b'341'), (b'req-arrive-time', b'1761237991702'), (b'resp-start-time', b'1761237992043'), (b'x-envoy-upstream-service-time', b'317'), (b'set-cookie', b'acw_tc=d25a5642-c9b1-4ca6-ad02-2df975132d1f405fd61ad47c0f5b3a91a7cd8f200636;path=/;HttpOnly;Max-Age=1800'), (b'date', b'Thu, 23 Oct 2025 16:46:31 GMT'), (b'server', b'istio-envoy'), (b'transfer-encoding', b'chunked')])
+2025-10-24 00:46:31,733 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 00:46:31,733 - app.qwen_client - DEBUG - Response headers: {'vary': 'Origin,Access-Control-Request-Method,Access-Control-Request-Headers', 'x-request-id': 'd25a5642-c9b1-4ca6-ad02-2df975132d1f', 'content-type': 'text/event-stream;charset=UTF-8', 'x-dashscope-call-gateway': 'true', 'x-dashscope-timeout': '298', 'x-dashscope-finished': 'false', 'req-cost-time': '341', 'req-arrive-time': '1761237991702', 'resp-start-time': '1761237992043', 'x-envoy-upstream-service-time': '317', 'set-cookie': 'acw_tc=d25a5642-c9b1-4ca6-ad02-2df975132d1f405fd61ad47c0f5b3a91a7cd8f200636;path=/;HttpOnly;Max-Age=1800', 'date': 'Thu, 23 Oct 2025 16:46:31 GMT', 'server': 'istio-envoy', 'transfer-encoding': 'chunked'}
+2025-10-24 00:46:31,734 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-10-24 00:46:31,734 - app.qwen_client - DEBUG - [Line 1] id:1
+2025-10-24 00:46:31,734 - app.qwen_client - DEBUG - [Line 2] event:error
+2025-10-24 00:46:31,734 - app.qwen_client - DEBUG - [Line 3] :HTTP_STATUS/400
+2025-10-24 00:46:31,734 - app.qwen_client - DEBUG - [Line 4] data:{"code":"InvalidParameter","message":"<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.","request_id":"d25a5642-c9b1-4ca6-
+2025-10-24 00:46:31,734 - app.qwen_client - DEBUG - Parsed SSE data: {"code": "InvalidParameter", "message": "<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.", "request_id": "d25a5642-c9b1-4ca6-ad02-2df975132d1f"}
+2025-10-24 00:46:31,734 - app.qwen_client - DEBUG - [Line 5] 
+2025-10-24 00:46:31,734 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-10-24 00:46:31,734 - httpcore.http11 - DEBUG - response_closed.started
+2025-10-24 00:46:31,735 - httpcore.http11 - DEBUG - response_closed.complete
+2025-10-24 00:46:31,735 - app.qwen_client - INFO - Total lines received: 5, tokens yielded: 0
+2025-10-24 00:46:31,735 - httpcore.connection - DEBUG - close.started
+2025-10-24 00:46:31,735 - httpcore.connection - DEBUG - close.complete
+2025-10-24 00:46:31,736 - __main__ - INFO - Video analysis completed for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, total tokens: 3
+2025-10-24 00:46:31,739 - app.video_processor - INFO - Cleaned up windows for session: ec47fd1a-ce63-4230-a2e4-ea9e63edf934
+INFO:     127.0.0.1:63417 - "POST /analyze-video HTTP/1.1" 200 OK
+2025-10-24 00:46:57,949 - __main__ - INFO - Received video analysis request for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934: /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761238017928.webm
+2025-10-24 00:46:57,950 - __main__ - INFO - Slicing video with sliding window...
+2025-10-24 00:46:58,056 - app.video_processor - INFO - Video duration: 26.96 seconds
+2025-10-24 00:46:58,091 - app.video_processor - DEBUG - FFmpeg command: ffmpeg -i /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761238017928.webm -ss 0.0 -t 15.0 -c copy -y temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_000_0_15.webm
+2025-10-24 00:46:58,091 - app.video_processor - INFO - Created window 0: 0.00s - 15.00s (15.00s)
+2025-10-24 00:46:58,126 - app.video_processor - DEBUG - FFmpeg command: ffmpeg -i /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761238017928.webm -ss 10.0 -t 15.0 -c copy -y temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_001_10_25.webm
+2025-10-24 00:46:58,127 - app.video_processor - INFO - Created window 1: 10.00s - 25.00s (15.00s)
+2025-10-24 00:46:58,174 - app.video_processor - DEBUG - FFmpeg command: ffmpeg -i /tmp/videos/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/video_1761238017928.webm -ss 20.0 -t 6.960359 -c copy -y temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_002_20_26.webm
+2025-10-24 00:46:58,174 - app.video_processor - INFO - Created window 2: 20.00s - 26.96s (6.96s)
+2025-10-24 00:46:58,174 - app.video_processor - INFO - Created 3 windows for video (duration: 26.96s)
+2025-10-24 00:46:58,174 - __main__ - INFO - Created 3 windows for analysis
+2025-10-24 00:46:58,174 - __main__ - INFO - Analyzing window 0/3: 0.0s - 15.0s
+2025-10-24 00:46:58,208 - app.grpc_client - DEBUG - Saved token 0 for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, ID: 8732
+2025-10-24 00:46:58,208 - app.qwen_client - INFO - Analyzing video window: 0.0s - 15.0s
+2025-10-24 00:46:58,208 - app.qwen_client - DEBUG - Request payload: {"model": "qwen-vl-max", "input": {"messages": [{"role": "user", "content": [{"video": "file:///Users/hupax/skiuo/ai-service/temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_000_0_15.webm"}, {"text": "请分析这段视频内容（时间范围：0.0秒 - 15.0秒）。\n\n这是第一个分析窗口，请完整描述视频内容。\n\n分析要求：\n1. **描述视频中发生的事情**：\n   - 用户在做什么活动？\n   - 屏幕上显示了什么内容？\n   - 有哪些关键操作或变化？\n\n2. **保持连贯性**：\n   - 结合之前的上下文理解当前活动\n   - 只描述这个时间段内新发生的事情\n   - 避免重复之前已经描述过的内容\n\n3. **输出格式**：\n   - 用自然、流畅的中文叙述\n   - 就像在记录一个连续的过程\n   - 不要使用固定的格式或标题\n\n
+2025-10-24 00:46:58,210 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-10-24 00:46:58,212 - httpx - DEBUG - load_verify_locations cafile='/Users/hupax/skiuo/ai-service/.venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2025-10-24 00:46:58,218 - httpcore.connection - DEBUG - connect_tcp.started host='dashscope.aliyuncs.com' port=443 local_address=None timeout=120 socket_options=None
+2025-10-24 00:46:58,223 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d5da60>
+2025-10-24 00:46:58,223 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x105d551d0> server_hostname='dashscope.aliyuncs.com' timeout=120
+2025-10-24 00:46:58,433 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d5d970>
+2025-10-24 00:46:58,434 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-10-24 00:46:58,434 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-10-24 00:46:58,434 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-10-24 00:46:58,435 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-10-24 00:46:58,435 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-10-24 00:46:59,111 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'vary', b'Origin,Access-Control-Request-Method,Access-Control-Request-Headers'), (b'x-request-id', b'd4d68112-1325-4d45-b148-a182ec9ddd5f'), (b'content-type', b'text/event-stream;charset=UTF-8'), (b'x-dashscope-call-gateway', b'true'), (b'x-dashscope-timeout', b'298'), (b'x-dashscope-finished', b'false'), (b'req-cost-time', b'568'), (b'req-arrive-time', b'1761238018851'), (b'resp-start-time', b'1761238019419'), (b'x-envoy-upstream-service-time', b'560'), (b'set-cookie', b'acw_tc=d4d68112-1325-4d45-b148-a182ec9ddd5f2ae0f06c35a47816dddd8f32d7ec69fe;path=/;HttpOnly;Max-Age=1800'), (b'date', b'Thu, 23 Oct 2025 16:46:59 GMT'), (b'server', b'istio-envoy'), (b'transfer-encoding', b'chunked')])
+2025-10-24 00:46:59,115 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 00:46:59,115 - app.qwen_client - DEBUG - Response headers: {'vary': 'Origin,Access-Control-Request-Method,Access-Control-Request-Headers', 'x-request-id': 'd4d68112-1325-4d45-b148-a182ec9ddd5f', 'content-type': 'text/event-stream;charset=UTF-8', 'x-dashscope-call-gateway': 'true', 'x-dashscope-timeout': '298', 'x-dashscope-finished': 'false', 'req-cost-time': '568', 'req-arrive-time': '1761238018851', 'resp-start-time': '1761238019419', 'x-envoy-upstream-service-time': '560', 'set-cookie': 'acw_tc=d4d68112-1325-4d45-b148-a182ec9ddd5f2ae0f06c35a47816dddd8f32d7ec69fe;path=/;HttpOnly;Max-Age=1800', 'date': 'Thu, 23 Oct 2025 16:46:59 GMT', 'server': 'istio-envoy', 'transfer-encoding': 'chunked'}
+2025-10-24 00:46:59,116 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-10-24 00:46:59,116 - app.qwen_client - DEBUG - [Line 1] id:1
+2025-10-24 00:46:59,116 - app.qwen_client - DEBUG - [Line 2] event:error
+2025-10-24 00:46:59,116 - app.qwen_client - DEBUG - [Line 3] :HTTP_STATUS/400
+2025-10-24 00:46:59,116 - app.qwen_client - DEBUG - [Line 4] data:{"code":"InvalidParameter","message":"<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.","request_id":"d4d68112-1325-4d45-
+2025-10-24 00:46:59,116 - app.qwen_client - DEBUG - Parsed SSE data: {"code": "InvalidParameter", "message": "<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.", "request_id": "d4d68112-1325-4d45-b148-a182ec9ddd5f"}
+2025-10-24 00:46:59,116 - app.qwen_client - DEBUG - [Line 5] 
+2025-10-24 00:46:59,116 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-10-24 00:46:59,116 - httpcore.http11 - DEBUG - response_closed.started
+2025-10-24 00:46:59,116 - httpcore.http11 - DEBUG - response_closed.complete
+2025-10-24 00:46:59,116 - app.qwen_client - INFO - Total lines received: 5, tokens yielded: 0
+2025-10-24 00:46:59,116 - httpcore.connection - DEBUG - close.started
+2025-10-24 00:46:59,117 - httpcore.connection - DEBUG - close.complete
+2025-10-24 00:46:59,117 - __main__ - INFO - Analyzing window 1/3: 10.0s - 25.0s
+2025-10-24 00:46:59,136 - app.grpc_client - DEBUG - Saved token 1 for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, ID: 8733
+2025-10-24 00:46:59,136 - app.qwen_client - INFO - Analyzing video window: 10.0s - 25.0s
+2025-10-24 00:46:59,136 - app.qwen_client - DEBUG - Request payload: {"model": "qwen-vl-max", "input": {"messages": [{"role": "user", "content": [{"video": "file:///Users/hupax/skiuo/ai-service/temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_001_10_25.webm"}, {"text": "请分析这段视频内容（时间范围：10.0秒 - 25.0秒）。\n\n这是第一个分析窗口，请完整描述视频内容。\n\n分析要求：\n1. **描述视频中发生的事情**：\n   - 用户在做什么活动？\n   - 屏幕上显示了什么内容？\n   - 有哪些关键操作或变化？\n\n2. **保持连贯性**：\n   - 结合之前的上下文理解当前活动\n   - 只描述这个时间段内新发生的事情\n   - 避免重复之前已经描述过的内容\n\n3. **输出格式**：\n   - 用自然、流畅的中文叙述\n   - 就像在记录一个连续的过程\n   - 不要使用固定的格式或标题\n
+2025-10-24 00:46:59,141 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-10-24 00:46:59,141 - httpx - DEBUG - load_verify_locations cafile='/Users/hupax/skiuo/ai-service/.venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2025-10-24 00:46:59,147 - httpcore.connection - DEBUG - connect_tcp.started host='dashscope.aliyuncs.com' port=443 local_address=None timeout=120 socket_options=None
+2025-10-24 00:46:59,149 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d37950>
+2025-10-24 00:46:59,149 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x105d54550> server_hostname='dashscope.aliyuncs.com' timeout=120
+2025-10-24 00:46:59,343 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d37740>
+2025-10-24 00:46:59,343 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-10-24 00:46:59,343 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-10-24 00:46:59,343 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-10-24 00:46:59,343 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-10-24 00:46:59,343 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-10-24 00:46:59,906 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'vary', b'Origin,Access-Control-Request-Method,Access-Control-Request-Headers'), (b'x-request-id', b'0e29fad7-b103-444d-b6ca-f4d18f7d8d6f'), (b'content-type', b'text/event-stream;charset=UTF-8'), (b'x-dashscope-call-gateway', b'true'), (b'x-dashscope-timeout', b'298'), (b'x-dashscope-finished', b'false'), (b'req-cost-time', b'458'), (b'req-arrive-time', b'1761238019755'), (b'resp-start-time', b'1761238020214'), (b'x-envoy-upstream-service-time', b'450'), (b'set-cookie', b'acw_tc=0e29fad7-b103-444d-b6ca-f4d18f7d8d6fa3228d13ea4962d3534677016166c756;path=/;HttpOnly;Max-Age=1800'), (b'date', b'Thu, 23 Oct 2025 16:46:59 GMT'), (b'server', b'istio-envoy'), (b'transfer-encoding', b'chunked')])
+2025-10-24 00:46:59,907 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 00:46:59,907 - app.qwen_client - DEBUG - Response headers: {'vary': 'Origin,Access-Control-Request-Method,Access-Control-Request-Headers', 'x-request-id': '0e29fad7-b103-444d-b6ca-f4d18f7d8d6f', 'content-type': 'text/event-stream;charset=UTF-8', 'x-dashscope-call-gateway': 'true', 'x-dashscope-timeout': '298', 'x-dashscope-finished': 'false', 'req-cost-time': '458', 'req-arrive-time': '1761238019755', 'resp-start-time': '1761238020214', 'x-envoy-upstream-service-time': '450', 'set-cookie': 'acw_tc=0e29fad7-b103-444d-b6ca-f4d18f7d8d6fa3228d13ea4962d3534677016166c756;path=/;HttpOnly;Max-Age=1800', 'date': 'Thu, 23 Oct 2025 16:46:59 GMT', 'server': 'istio-envoy', 'transfer-encoding': 'chunked'}
+2025-10-24 00:46:59,908 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-10-24 00:46:59,908 - app.qwen_client - DEBUG - [Line 1] id:1
+2025-10-24 00:46:59,908 - app.qwen_client - DEBUG - [Line 2] event:error
+2025-10-24 00:46:59,908 - app.qwen_client - DEBUG - [Line 3] :HTTP_STATUS/400
+2025-10-24 00:46:59,908 - app.qwen_client - DEBUG - [Line 4] data:{"code":"InvalidParameter","message":"<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.","request_id":"0e29fad7-b103-444d-
+2025-10-24 00:46:59,908 - app.qwen_client - DEBUG - Parsed SSE data: {"code": "InvalidParameter", "message": "<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.", "request_id": "0e29fad7-b103-444d-b6ca-f4d18f7d8d6f"}
+2025-10-24 00:46:59,908 - app.qwen_client - DEBUG - [Line 5] 
+2025-10-24 00:46:59,909 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-10-24 00:46:59,909 - httpcore.http11 - DEBUG - response_closed.started
+2025-10-24 00:46:59,909 - httpcore.http11 - DEBUG - response_closed.complete
+2025-10-24 00:46:59,909 - app.qwen_client - INFO - Total lines received: 5, tokens yielded: 0
+2025-10-24 00:46:59,909 - httpcore.connection - DEBUG - close.started
+2025-10-24 00:46:59,909 - httpcore.connection - DEBUG - close.complete
+2025-10-24 00:46:59,909 - __main__ - INFO - Analyzing window 2/3: 20.0s - 27.0s
+2025-10-24 00:46:59,930 - app.grpc_client - DEBUG - Saved token 2 for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, ID: 8734
+2025-10-24 00:46:59,931 - app.qwen_client - INFO - Analyzing video window: 20.0s - 27.0s
+2025-10-24 00:46:59,931 - app.qwen_client - DEBUG - Request payload: {"model": "qwen-vl-max", "input": {"messages": [{"role": "user", "content": [{"video": "file:///Users/hupax/skiuo/ai-service/temp_windows/ec47fd1a-ce63-4230-a2e4-ea9e63edf934/window_002_20_26.webm"}, {"text": "请分析这段视频内容（时间范围：20.0秒 - 27.0秒）。\n\n这是第一个分析窗口，请完整描述视频内容。\n\n分析要求：\n1. **描述视频中发生的事情**：\n   - 用户在做什么活动？\n   - 屏幕上显示了什么内容？\n   - 有哪些关键操作或变化？\n\n2. **保持连贯性**：\n   - 结合之前的上下文理解当前活动\n   - 只描述这个时间段内新发生的事情\n   - 避免重复之前已经描述过的内容\n\n3. **输出格式**：\n   - 用自然、流畅的中文叙述\n   - 就像在记录一个连续的过程\n   - 不要使用固定的格式或标题\n
+2025-10-24 00:46:59,931 - httpx - DEBUG - load_ssl_context verify=True cert=None trust_env=True http2=False
+2025-10-24 00:46:59,932 - httpx - DEBUG - load_verify_locations cafile='/Users/hupax/skiuo/ai-service/.venv/lib/python3.12/site-packages/certifi/cacert.pem'
+2025-10-24 00:46:59,939 - httpcore.connection - DEBUG - connect_tcp.started host='dashscope.aliyuncs.com' port=443 local_address=None timeout=120 socket_options=None
+2025-10-24 00:46:59,942 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d364e0>
+2025-10-24 00:46:59,942 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x105d541d0> server_hostname='dashscope.aliyuncs.com' timeout=120
+2025-10-24 00:47:00,189 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x105d36330>
+2025-10-24 00:47:00,190 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2025-10-24 00:47:00,190 - httpcore.http11 - DEBUG - send_request_headers.complete
+2025-10-24 00:47:00,190 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
+2025-10-24 00:47:00,190 - httpcore.http11 - DEBUG - send_request_body.complete
+2025-10-24 00:47:00,191 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2025-10-24 00:47:00,952 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'vary', b'Origin,Access-Control-Request-Method,Access-Control-Request-Headers'), (b'x-request-id', b'b656f1fd-f748-4581-9b62-8c1f06337a1e'), (b'content-type', b'text/event-stream;charset=UTF-8'), (b'x-dashscope-call-gateway', b'true'), (b'x-dashscope-timeout', b'298'), (b'x-dashscope-finished', b'false'), (b'req-cost-time', b'564'), (b'req-arrive-time', b'1761238020591'), (b'resp-start-time', b'1761238021155'), (b'x-envoy-upstream-service-time', b'555'), (b'set-cookie', b'acw_tc=b656f1fd-f748-4581-9b62-8c1f06337a1e3bf826470b1c6ba0569625258c247d31;path=/;HttpOnly;Max-Age=1800'), (b'date', b'Thu, 23 Oct 2025 16:47:01 GMT'), (b'server', b'istio-envoy'), (b'transfer-encoding', b'chunked')])
+2025-10-24 00:47:00,953 - httpx - INFO - HTTP Request: POST https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation "HTTP/1.1 200 OK"
+2025-10-24 00:47:00,953 - app.qwen_client - DEBUG - Response headers: {'vary': 'Origin,Access-Control-Request-Method,Access-Control-Request-Headers', 'x-request-id': 'b656f1fd-f748-4581-9b62-8c1f06337a1e', 'content-type': 'text/event-stream;charset=UTF-8', 'x-dashscope-call-gateway': 'true', 'x-dashscope-timeout': '298', 'x-dashscope-finished': 'false', 'req-cost-time': '564', 'req-arrive-time': '1761238020591', 'resp-start-time': '1761238021155', 'x-envoy-upstream-service-time': '555', 'set-cookie': 'acw_tc=b656f1fd-f748-4581-9b62-8c1f06337a1e3bf826470b1c6ba0569625258c247d31;path=/;HttpOnly;Max-Age=1800', 'date': 'Thu, 23 Oct 2025 16:47:01 GMT', 'server': 'istio-envoy', 'transfer-encoding': 'chunked'}
+2025-10-24 00:47:00,953 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
+2025-10-24 00:47:00,953 - app.qwen_client - DEBUG - [Line 1] id:1
+2025-10-24 00:47:00,954 - app.qwen_client - DEBUG - [Line 2] event:error
+2025-10-24 00:47:00,954 - app.qwen_client - DEBUG - [Line 3] :HTTP_STATUS/400
+2025-10-24 00:47:00,954 - app.qwen_client - DEBUG - [Line 4] data:{"code":"InvalidParameter","message":"<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.","request_id":"b656f1fd-f748-4581-
+2025-10-24 00:47:00,954 - app.qwen_client - DEBUG - Parsed SSE data: {"code": "InvalidParameter", "message": "<400> InternalError.Algo.InvalidParameter: The provided URL does not appear to be valid. Ensure it is correctly formatted.", "request_id": "b656f1fd-f748-4581-9b62-8c1f06337a1e"}
+2025-10-24 00:47:00,954 - app.qwen_client - DEBUG - [Line 5] 
+2025-10-24 00:47:00,954 - httpcore.http11 - DEBUG - receive_response_body.complete
+2025-10-24 00:47:00,954 - httpcore.http11 - DEBUG - response_closed.started
+2025-10-24 00:47:00,954 - httpcore.http11 - DEBUG - response_closed.complete
+2025-10-24 00:47:00,954 - app.qwen_client - INFO - Total lines received: 5, tokens yielded: 0
+2025-10-24 00:47:00,954 - httpcore.connection - DEBUG - close.started
+2025-10-24 00:47:00,954 - httpcore.connection - DEBUG - close.complete
+2025-10-24 00:47:00,955 - __main__ - INFO - Video analysis completed for session ec47fd1a-ce63-4230-a2e4-ea9e63edf934, total tokens: 3
+2025-10-24 00:47:00,956 - app.video_processor - INFO - Cleaned up windows for session: ec47fd1a-ce63-4230-a2e4-ea9e63edf934
+INFO:     127.0.0.1:63591 - "POST /analyze-video HTTP/1.1" 200 OK

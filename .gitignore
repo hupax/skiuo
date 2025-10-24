@@ -40,3 +40,7 @@ coverage/
 logs/
 *.log
 npm-debug.log*
+
+# AI Service temp files
+ai-service/debug_frames/
+ai-service/temp_windows/

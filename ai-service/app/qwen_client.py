@@ -188,7 +188,7 @@ class QwenVisionClient:
         Analyze a video window with streaming response
 
         Args:
-            video_path: Path to video file or video URL
+            video_path: Path to video file or HTTP/HTTPS URL
             start_time: Window start time (seconds)
             end_time: Window end time (seconds)
             context: Previous conversation context (optional)
@@ -211,11 +211,15 @@ class QwenVisionClient:
         )
 
         # Build message content
-        # Note: Qwen-VL supports video input via file:// URL
-        # Convert to absolute path URL
-        import os
-        abs_video_path = os.path.abspath(video_path)
-        video_url = f"file://{abs_video_path}"
+        # Qwen-VL supports both local file:// URLs and HTTP/HTTPS URLs
+        if video_path.startswith("http://") or video_path.startswith("https://"):
+            # Use HTTP URL directly
+            video_url = video_path
+        else:
+            # Convert local path to file:// URL
+            import os
+            abs_video_path = os.path.abspath(video_path)
+            video_url = f"file://{abs_video_path}"
 
         message_content = [
             {"video": video_url},
@@ -251,6 +255,7 @@ class QwenVisionClient:
 
         try:
             logger.info(f"Analyzing video window: {start_time:.1f}s - {end_time:.1f}s")
+
             async with httpx.AsyncClient(timeout=self.timeout) as client:
                 async with client.stream(
                     "POST",
@@ -269,6 +274,7 @@ class QwenVisionClient:
 
                             try:
                                 data = json.loads(data_str)
+
                                 output = data.get("output", {})
                                 choices = output.get("choices", [])
 

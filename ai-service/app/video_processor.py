@@ -121,8 +121,8 @@ class VideoProcessor:
                 logger.info(f"Remaining duration {window_duration:.2f}s too short, skipping")
                 break
 
-            # 生成窗口文件路径
-            window_filename = f"window_{window_index:03d}_{int(current_time)}_{int(end_time)}.mp4"
+            # 生成窗口文件路径（使用 WebM 格式以兼容 VP8 编码）
+            window_filename = f"window_{window_index:03d}_{int(current_time)}_{int(end_time)}.webm"
             window_path = session_dir / window_filename
 
             # 使用 FFmpeg 切片

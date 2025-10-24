@@ -25,6 +25,13 @@ class Settings(BaseSettings):
     max_retries: int = 3
     timeout_seconds: int = 120
 
+    # Minio Configuration (S3 Compatible)
+    minio_endpoint: str = os.getenv("MINIO_ENDPOINT", "https://minio-api.supanx.net")
+    minio_bucket: str = os.getenv("MINIO_BUCKET", "test")
+    minio_access_key: str = os.getenv("MINIO_ACCESS_KEY", "")
+    minio_secret_key: str = os.getenv("MINIO_SECRET_KEY", "")
+    minio_public_url: str = os.getenv("MINIO_PUBLIC_URL", "https://minio-api.supanx.net/test/")
+
     class Config:
         env_file = "..env"
         protected_namespaces = ('settings_',)  # 修改保护的命名空间

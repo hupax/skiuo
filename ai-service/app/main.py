@@ -13,6 +13,7 @@ from app.qwen_client import QwenVisionClient
 from app.grpc_client import SpringBootGrpcClient
 from app.context_manager import ContextManager
 from app.video_processor import VideoProcessor
+from app.minio_client import MinioClient
 
 # Configure logging
 logging.basicConfig(
@@ -30,6 +31,7 @@ video_processor = VideoProcessor(
     step_size=10.0,    # 10 seconds (5s overlap)
     output_dir="./temp_windows"
 )
+minio_client = MinioClient()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -186,7 +188,7 @@ async def analyze_video(request: VideoAnalysisRequest):
     流程：
     1. 接收视频文件路径
     2. 使用滑动窗口切片视频
-    3. 逐个窗口进行 AI 分析
+    3. 逐个窗口进行 AI 分析（直接分析视频）
     4. 流式发送结果到 Spring Boot（gRPC）
     5. 管理上下文连贯性
     """
@@ -201,10 +203,9 @@ async def analyze_video(request: VideoAnalysisRequest):
         raise HTTPException(status_code=404, detail=f"Video file not found: {video_path}")
 
     try:
-        # 1. 使用滑动窗口切片视频
-        logger.info(f"Slicing video with sliding window...")
+        # 1. 切片视频为滑动窗口
+        logger.info(f"Slicing video into windows...")
         windows = video_processor.slice_video_with_sliding_window(video_path, session_id)
-        logger.info(f"Created {len(windows)} windows for analysis")
 
         if not windows:
             logger.warning(f"No windows created for video {video_path}")
@@ -215,20 +216,21 @@ async def analyze_video(request: VideoAnalysisRequest):
                 message="Video too short, no windows created"
             )
 
-        # 2. 逐个窗口分析
+        logger.info(f"Created {len(windows)} windows for analysis")
+
+        # 2. 逐个窗口上传到Minio并进行 AI 分析
         token_index = 0
+        previous_summary = None
+        uploaded_urls = []  # 记录所有上传的Minio URL，用于最后清理
 
         for window in windows:
             logger.info(
-                f"Analyzing window {window.window_index}/{len(windows)}: "
+                f"Analyzing window {window.window_index + 1}/{len(windows)}: "
                 f"{window.start_time:.1f}s - {window.end_time:.1f}s"
             )
 
-            # 获取前一个窗口的摘要（保持连贯性）
-            previous_summary = context_manager.get_previous_window_summary(session_id)
-
             # 发送窗口标记到前端
-            window_marker = f"\n\n📹 [分析窗口 {window.window_index + 1}/{len(windows)}] ({window.start_time:.1f}s - {window.end_time:.1f}s) "
+            window_marker = f"\n\n📹 [分析窗口 {window.window_index + 1}/{len(windows)}] ({window.start_time:.1f}s - {window.end_time:.1f}s)\n"
             timestamp = int(asyncio.get_event_loop().time() * 1000)
             await grpc_client.save_analysis(
                 session_id=session_id,
@@ -238,13 +240,37 @@ async def analyze_video(request: VideoAnalysisRequest):
             )
             token_index += 1
 
-            # 3. AI 分析窗口视频
+            # 上传窗口视频到Minio
+            video_url = None
+            try:
+                logger.info(f"Uploading window {window.window_index} to Minio...")
+                video_url = minio_client.upload_video(window.file_path)
+                uploaded_urls.append(video_url)
+                logger.info(f"Window uploaded: {video_url}")
+            except Exception as e:
+                logger.error(f"Failed to upload window {window.window_index} to Minio: {e}")
+                error_msg = f"\n[ERROR] 上传窗口 {window.window_index} 到Minio失败: {str(e)}\n"
+                timestamp = int(asyncio.get_event_loop().time() * 1000)
+                await grpc_client.save_analysis(
+                    session_id=session_id,
+                    content=error_msg,
+                    token_index=token_index,
+                    timestamp=timestamp
+                )
+                token_index += 1
+                continue  # 跳过这个窗口的分析
+
+            # 获取上下文
+            context = context_manager.get_context(session_id)
+
+            # AI 分析窗口视频（使用Minio公网URL）
             accumulated_response = ""
             try:
                 async for token in qwen_client.analyze_video_streaming(
-                    video_path=window.file_path,
+                    video_path=video_url,
                     start_time=window.start_time,
                     end_time=window.end_time,
+                    context=context,
                     previous_summary=previous_summary
                 ):
                     accumulated_response += token
@@ -261,17 +287,14 @@ async def analyze_video(request: VideoAnalysisRequest):
                     if success:
                         token_index += 1
                     else:
-                        logger.error(f"Failed to save token {token_index} for session {session_id}")
+                        logger.error(f"Failed to save token {token_index}")
 
-                # 4. 保存窗口摘要（用于下一个窗口的上下文）
+                # 更新上下文和摘要
                 if accumulated_response:
-                    # 截取前 300 字符作为摘要
-                    summary = accumulated_response[:300]
-                    context_manager.add_window_summary(session_id, window.window_index, summary)
-                    logger.info(
-                        f"Window {window.window_index} analysis completed: "
-                        f"{len(accumulated_response)} chars"
-                    )
+                    # 保存完整的分析结果作为上下文
+                    context_manager.add_to_context(session_id, accumulated_response[:500], role="assistant")
+                    previous_summary = accumulated_response[:200]  # 保留前200字符作为摘要
+                    logger.info(f"Window {window.window_index} analyzed: {len(accumulated_response)} chars")
 
             except Exception as e:
                 logger.error(f"Error analyzing window {window.window_index}: {e}", exc_info=True)
@@ -287,11 +310,19 @@ async def analyze_video(request: VideoAnalysisRequest):
 
         logger.info(f"Video analysis completed for session {session_id}, total tokens: {token_index}")
 
-        # 5. 清理窗口文件
+        # 3. 清理Minio上传的文件
+        logger.info(f"Cleaning up {len(uploaded_urls)} uploaded files from Minio...")
+        for url in uploaded_urls:
+            try:
+                minio_client.delete_video(url)
+            except Exception as e:
+                logger.warning(f"Failed to delete Minio file {url}: {e}")
+
+        # 4. 清理本地窗口文件
         try:
             video_processor.cleanup_windows(session_id)
         except Exception as e:
-            logger.warning(f"Failed to cleanup windows: {e}")
+            logger.warning(f"Failed to cleanup local windows: {e}")
 
         return VideoAnalysisResponse(
             session_id=session_id,

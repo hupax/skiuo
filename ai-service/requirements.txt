@@ -18,6 +18,9 @@ python-dotenv==1.0.0
 pydantic==2.5.2
 pydantic-settings==2.1.0
 
+# Minio (S3 Compatible)
+boto3==1.35.0
+
 # NOTE: FFmpeg must be installed separately on the system
 # macOS: brew install ffmpeg
 # Ubuntu: sudo apt-get install ffmpeg

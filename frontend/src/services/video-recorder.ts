@@ -3,9 +3,7 @@
  * 使用 MediaRecorder API 录制视频片段并上传到服务器
  */
 
-import axios from 'axios';
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+import api from './api';  // 使用配置好的 axios 实例（包含 JWT token）
 
 interface VideoRecorderConfig {
   sessionId: string;
@@ -167,8 +165,8 @@ class VideoRecorderService {
     formData.append('video', blob, `segment_${segmentIndex}.webm`);
 
     try {
-      const response = await axios.post(
-        `${API_URL}/api/videos/${this.config.sessionId}/upload`,
+      const response = await api.post(
+        `/api/videos/${this.config.sessionId}/upload`,
         formData,
         {
           headers: {
